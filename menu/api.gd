@@ -1,6 +1,6 @@
-extends Control
+extends Button
 
-@onready var http_request = $Request/HTTPRequest
+@onready var http_request = $HTTPRequest
 const URL = "http://127.0.0.1:8080/hello"
 const BASE_URL = "http://127.0.0.1:8080/recommend"
 
@@ -18,3 +18,4 @@ func _on_http_request_request_completed(_result, _response_code, _headers, body)
 	print(data)
 	http_request.cancel_request()
 	recommendations_received.emit(data)
+
