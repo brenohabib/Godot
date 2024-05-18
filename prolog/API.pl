@@ -23,10 +23,6 @@ recommend_tech(Category, Popularity, TechList) :-
 :- http_handler(root(hello), say_hello, []).
 :- http_handler(root(recommend), recommend_handler, []).
 
-% Handler para a rota /hello
-say_hello(_Request) :-
-    reply_json_dict(_{message: "Hello, Godot!"}).
-
 % Handler para a rota /recommend
 recommend_handler(Request) :-
     http_parameters(Request, [
