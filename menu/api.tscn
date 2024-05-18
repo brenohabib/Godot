@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://co2w5wjbbv485"]
+
+[ext_resource type="Script" path="res://API.gd" id="1_l4edx"]
+
+[node name="API" type="Node2D"]
+script = ExtResource("1_l4edx")
+
+[node name="Request" type="Button" parent="."]
+offset_left = 445.0
+offset_top = 276.0
+offset_right = 675.0
+offset_bottom = 334.0
+text = "request"
+
+[node name="HTTPRequest" type="HTTPRequest" parent="Request"]
+use_threads = true
+max_redirects = 4
+
+[connection signal="button_down" from="Request" to="." method="_on_request_button_down"]
+[connection signal="request_completed" from="Request/HTTPRequest" to="." method="_on_http_request_request_completed"]
