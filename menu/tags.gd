@@ -21,3 +21,5 @@ func _on_searchbar_text_changed(new_text):
 			i.show()
 		else:
 			i.hide()
+			
+
