@@ -4,36 +4,36 @@
 :- use_module(library(http/http_json)).
 
 % Definição das tecnologias
-:- dynamic tech/3.
+:- dynamic tech/4.
 
-% tech(Name, Category, Popularity).
-tech(python, programming_language, high).
-tech(java, programming_language, high).
-tech(elixir, programming_language, medium).
-tech(django, framework, high).
-tech(flask, framework, medium).
-tech(react, frontend, high).
-tech(angular, frontend, medium).
-tech(basic, programming_language, low).
-tech(c, programming_language, high).
-tech(go, programming_language, medium).
-tech(haskell, programming_language, medium).
-tech(itk, toolkit, low).
-tech(kawa, programming_language, low).
-tech(lua, programming_language, medium).
-tech(matlab, programming_language, medium).
-tech(nasm, programming_language, low).
-tech(opencl, framework, medium).
-tech(prolog, programming_language, low).
-tech(qbasic, programming_language, low).
-tech(scratch, programming_language, medium).
-tech(typescript, programming_language, high).
-tech(unicon, programming_language, low).
-tech(visual_basic, programming_language, medium).
-tech(webgl, framework, medium).
-tech(xojo, programming_language, low).
-tech(yorick, programming_language, low).
-tech(zig, programming_language, low).
+% tech(Name, Category, Popularity, Difficulty).
+tech(python, programming_language, high, low).
+tech(java, programming_language, high, high).
+tech(elixir, programming_language, medium, medium).
+tech(django, framework, high, low).
+tech(flask, framework, medium, low).
+tech(react, frontend, high, medium).
+tech(angular, frontend, medium, high).
+tech(basic, programming_language, low, low).
+tech(c, programming_language, high, high).
+tech(go, programming_language, medium, medium).
+tech(haskell, programming_language, medium, high).
+tech(itk, toolkit, low, medium).
+tech(kawa, programming_language, low, medium).
+tech(lua, programming_language, medium, medium).
+tech(matlab, programming_language, medium, medium).
+tech(nasm, programming_language, low, high).
+tech(opencl, framework, medium, high).
+tech(prolog, programming_language, low, high).
+tech(qbasic, programming_language, low, low).
+tech(scratch, programming_language, medium, low).
+tech(typescript, programming_language, high, low).
+tech(unicon, programming_language, low, medium).
+tech(visual_basic, programming_language, medium, medium).
+tech(webgl, framework, medium, medium).
+tech(xojo, programming_language, low, medium).
+tech(yorick, programming_language, low, medium).
+tech(zig, programming_language, low, medium).
 
 
 % Regras de recomendação
@@ -62,14 +62,14 @@ tech_info_handler(Request) :-
     get_tech_info(Names, TechInfoList),
     reply_json_dict(_{tech_info: TechInfoList}).
 
-% Obtém informações sobre as tecnologias
+% Obtém informações sobre tecnologias
 get_tech_info([], []).
-get_tech_info([Name|Rest], [Info|TechInfoList]) :-
-    tech(Name, Category, Popularity),
-    Info = _{name: Name, category: Category, popularity: Popularity},
-    get_tech_info(Rest, TechInfoList).
+get_tech_info([Name|NameList], [Info|TechInfoList]) :-
+    tech(Name, Category, Popularity, Difficulty),
+    Info = _{name: Name, category: Category, popularity: Popularity, difficulty: Difficulty},
+    get_tech_info(NameList, TechInfoList).
 
-% Inicialização do servidor
+% Inicialização servidor
 server(Port) :-
     http_server(http_dispatch, [port(Port)]).
 
