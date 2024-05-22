@@ -24,5 +24,11 @@ func _on_searchbar_text_changed(text):
 	for button in vbox.get_children():
 		if button in matches:
 			button.show()
+		elif text == "":
+			button.show()
 		else:
 			button.hide()
+
+
+func _on_exit_pressed():
+	get_tree().quit()

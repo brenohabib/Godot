@@ -4,6 +4,12 @@ extends HTTPRequest
 const TECH_URL = "http://127.0.0.1:8080/tech_info"
 signal recommendations_received(data)
 
+@onready var iten_popup = $"../ItenPopup"
+
+func popup(data: String):
+	iten_popup.show()
+	iten_popup.get_node("MarginContainer/HBoxContainer/VBoxContainer/Data").text = data
+
 func _on_python_button_down():
 	send_request("python")
 
@@ -93,9 +99,14 @@ func send_request(language: String):
 func _on_request_completed(_result, _response_code, _headers, body):
 	var data = JSON.parse_string(body.get_string_from_utf8())
 	if data == null:
-		$"../Label".show()
-		$"../Label/Timer".start()
+		$"../Erro".show()
+		$"../Erro/Timer".start()
 	else:
 		print(data)
+		popup(body.get_string_from_utf8())
 	http_request.cancel_request()
 	recommendations_received.emit(data)
+
+	
+func _on_iten_popup_close_requested():
+	iten_popup.hide()
