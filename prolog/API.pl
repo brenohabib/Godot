@@ -4,8 +4,6 @@
 :- use_module(library(http/http_json)).
 
 % Definição das tecnologias
-:- dynamic tech/4.
-
 % tech(Name, Category, Popularity, Difficulty).
 tech(python, programming_language, high, low).
 tech(java, programming_language, high, high).
@@ -35,10 +33,11 @@ tech(xojo, programming_language, low, medium).
 tech(yorick, programming_language, low, medium).
 tech(zig, programming_language, low, medium).
 
-
 % Regras de recomendação
-recommend_tech(Category, Popularity, TechList) :-
-    findall(Name, (tech(Name, Category, Popularity)), TechList).
+recommend_tech(Category, Popularity, Difficulty, Name) :-
+    (var(Category) ; tech(Name, Category, _, _)),
+    (var(Popularity) ; tech(Name, _, Popularity, _)),
+    (var(Difficulty) ; tech(Name, _, _, Difficulty)).
 
 % Define o handler para a rota de recomendação
 :- http_handler(root(recommend), recommend_handler, []).
@@ -48,11 +47,13 @@ recommend_tech(Category, Popularity, TechList) :-
 % Handler de recomendação
 recommend_handler(Request) :-
     http_parameters(Request, [
-        category(Category, [atom]),
-        popularity(Popularity, [atom])
+        category(Category, [optional(true), atom]),
+        popularity(Popularity, [optional(true), atom]),
+        difficulty(Difficulty, [optional(true), atom])
     ]),
-    recommend_tech(Category, Popularity, TechList),
-    reply_json_dict(_{recommendations: TechList}).
+    findall(Name, recommend_tech(Category, Popularity, Difficulty, Name), TechList),
+    sort(TechList, UniqueTechList),
+    reply_json_dict(_{recommendations: UniqueTechList}).
 
 % Handler para informações de tecnologia
 tech_info_handler(Request) :-

@@ -1,7 +1,7 @@
 extends HTTPRequest
 
 @onready var http_request = self
-const BASE_URL = "http://127.0.0.1:8080/tech_info"
+const TECH_URL = "http://127.0.0.1:8080/tech_info"
 signal recommendations_received(data)
 
 func _on_python_button_down():
@@ -38,7 +38,7 @@ func _on_haskell_button_down():
 	send_request("haskell")
 
 func _on_itk_button_down():
-	send_request("irk")
+	send_request("itk")
 
 func _on_kawa_button_down():
 	send_request("kawa")
@@ -87,7 +87,7 @@ func _on_zig_button_down():
 
 func send_request(language: String):
 	http_request.cancel_request()
-	var url = BASE_URL + "?name=" + language
+	var url = TECH_URL + "?name=" + language
 	http_request.request(url)
 							 
 func _on_request_completed(_result, _response_code, _headers, body):
@@ -99,7 +99,3 @@ func _on_request_completed(_result, _response_code, _headers, body):
 		print(data)
 	http_request.cancel_request()
 	recommendations_received.emit(data)
-
-
-
-

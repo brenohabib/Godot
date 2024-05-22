@@ -1,7 +1,7 @@
-[gd_scene load_steps=31 format=3 uid="uid://b28inqgtkbjsc"]
+[gd_scene load_steps=32 format=3 uid="uid://b28inqgtkbjsc"]
 
 [ext_resource type="Script" path="res://menu/search.gd" id="1_n63fm"]
-[ext_resource type="Script" path="res://menu/scripts/api.gd" id="2_hf1ev"]
+[ext_resource type="Script" path="res://menu/scripts/api_tech_info.gd" id="2_hf1ev"]
 [ext_resource type="Texture2D" uid="uid://8rg6foaylyqu" path="res://menu/images/python-icon-512x509-pb65l7gl.png" id="2_vju1g"]
 [ext_resource type="Texture2D" uid="uid://balq7n5cc4gvb" path="res://menu/images/Basic.jpg" id="3_5p74s"]
 [ext_resource type="Texture2D" uid="uid://dj7do0ah8wa58" path="res://menu/images/java-icon.png" id="3_kmblk"]
@@ -30,6 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://b88ru42ym1dwq" path="res://menu/images/Xojo_Company_Logo.png" id="26_nk6wp"]
 [ext_resource type="Texture2D" uid="uid://bmhpi13rqi75u" path="res://menu/images/Yorick.png" id="27_qsu38"]
 [ext_resource type="Texture2D" uid="uid://dxrnxb22ypcnl" path="res://menu/images/Zig.png" id="28_lijvx"]
+[ext_resource type="Script" path="res://menu/scripts/api_recommend.gd" id="30_fmc64"]
 
 [node name="Input" type="Control"]
 layout_mode = 3
@@ -313,19 +314,25 @@ alignment = 0
 icon_alignment = 2
 expand_icon = true
 
-[node name="HTTPRequest" type="HTTPRequest" parent="."]
+[node name="Tech_Info" type="HTTPRequest" parent="."]
 timeout = 1.0
 script = ExtResource("2_hf1ev")
+
+[node name="Recommend" type="HTTPRequest" parent="."]
+script = ExtResource("30_fmc64")
 
 [node name="Label" type="Label" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.552
-offset_top = 134.136
-offset_bottom = -223.56
+anchor_left = 0.317
+anchor_top = 0.474
+anchor_right = 0.687
+anchor_bottom = 0.523
+offset_left = 210.816
+offset_top = -46.008
+offset_right = -215.424
+offset_bottom = -77.76
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
@@ -338,32 +345,33 @@ wait_time = 4.0
 one_shot = true
 
 [connection signal="text_changed" from="Search" to="Search" method="_on_searchbar_text_changed"]
-[connection signal="button_down" from="Search/Scroll/Tags/Angular" to="HTTPRequest" method="_on_angular_button_down"]
-[connection signal="button_down" from="Search/Scroll/Tags/Basic" to="HTTPRequest" method="_on_basic_button_down"]
-[connection signal="button_down" from="Search/Scroll/Tags/C" to="HTTPRequest" method="_on_c_button_down"]
-[connection signal="button_down" from="Search/Scroll/Tags/Django" to="HTTPRequest" method="_on_django_button_down"]
-[connection signal="button_down" from="Search/Scroll/Tags/Elixir" to="HTTPRequest" method="_on_elixir_button_down"]
-[connection signal="button_down" from="Search/Scroll/Tags/Flask" to="HTTPRequest" method="_on_flask_button_down"]
-[connection signal="button_down" from="Search/Scroll/Tags/Go" to="HTTPRequest" method="_on_go_button_down"]
-[connection signal="button_down" from="Search/Scroll/Tags/Haskell" to="HTTPRequest" method="_on_haskell_button_down"]
-[connection signal="button_down" from="Search/Scroll/Tags/Itk" to="HTTPRequest" method="_on_itk_button_down"]
-[connection signal="button_down" from="Search/Scroll/Tags/Java" to="HTTPRequest" method="_on_java_button_down"]
-[connection signal="button_down" from="Search/Scroll/Tags/Python" to="HTTPRequest" method="_on_python_button_down"]
-[connection signal="button_down" from="Search/Scroll/Tags/React" to="HTTPRequest" method="_on_react_button_down"]
-[connection signal="button_down" from="Search/Scroll/Tags/Kawa" to="HTTPRequest" method="_on_kawa_button_down"]
-[connection signal="button_down" from="Search/Scroll/Tags/Lua" to="HTTPRequest" method="_on_lua_button_down"]
-[connection signal="button_down" from="Search/Scroll/Tags/Matlab" to="HTTPRequest" method="_on_matlab_button_down"]
-[connection signal="button_down" from="Search/Scroll/Tags/Nasm" to="HTTPRequest" method="_on_nasm_button_down"]
-[connection signal="button_down" from="Search/Scroll/Tags/OpenCL" to="HTTPRequest" method="_on_open_cl_button_down"]
-[connection signal="button_down" from="Search/Scroll/Tags/Prolog" to="HTTPRequest" method="_on_prolog_button_down"]
-[connection signal="button_down" from="Search/Scroll/Tags/QBasic" to="HTTPRequest" method="_on_q_basic_button_down"]
-[connection signal="button_down" from="Search/Scroll/Tags/Scratch" to="HTTPRequest" method="_on_scratch_button_down"]
-[connection signal="button_down" from="Search/Scroll/Tags/TypeScript" to="HTTPRequest" method="_on_type_script_button_down"]
-[connection signal="button_down" from="Search/Scroll/Tags/Unicon" to="HTTPRequest" method="_on_unicon_button_down"]
-[connection signal="button_down" from="Search/Scroll/Tags/Visual_Basic" to="HTTPRequest" method="_on_visual_basic_button_down"]
-[connection signal="button_down" from="Search/Scroll/Tags/WebGL" to="HTTPRequest" method="_on_web_gl_button_down"]
-[connection signal="button_down" from="Search/Scroll/Tags/Xojo" to="HTTPRequest" method="_on_xojo_button_down"]
-[connection signal="button_down" from="Search/Scroll/Tags/Yorick" to="HTTPRequest" method="_on_yorick_button_down"]
-[connection signal="button_down" from="Search/Scroll/Tags/Zig" to="HTTPRequest" method="_on_zig_button_down"]
-[connection signal="request_completed" from="HTTPRequest" to="HTTPRequest" method="_on_request_completed"]
+[connection signal="button_down" from="Search/Scroll/Tags/Angular" to="Tech_Info" method="_on_angular_button_down"]
+[connection signal="button_down" from="Search/Scroll/Tags/Basic" to="Tech_Info" method="_on_basic_button_down"]
+[connection signal="button_down" from="Search/Scroll/Tags/C" to="Tech_Info" method="_on_c_button_down"]
+[connection signal="button_down" from="Search/Scroll/Tags/Django" to="Tech_Info" method="_on_django_button_down"]
+[connection signal="button_down" from="Search/Scroll/Tags/Elixir" to="Tech_Info" method="_on_elixir_button_down"]
+[connection signal="button_down" from="Search/Scroll/Tags/Flask" to="Tech_Info" method="_on_flask_button_down"]
+[connection signal="button_down" from="Search/Scroll/Tags/Go" to="Tech_Info" method="_on_go_button_down"]
+[connection signal="button_down" from="Search/Scroll/Tags/Haskell" to="Tech_Info" method="_on_haskell_button_down"]
+[connection signal="button_down" from="Search/Scroll/Tags/Itk" to="Tech_Info" method="_on_itk_button_down"]
+[connection signal="button_down" from="Search/Scroll/Tags/Java" to="Tech_Info" method="_on_java_button_down"]
+[connection signal="button_down" from="Search/Scroll/Tags/Python" to="Tech_Info" method="_on_python_button_down"]
+[connection signal="button_down" from="Search/Scroll/Tags/React" to="Tech_Info" method="_on_react_button_down"]
+[connection signal="button_down" from="Search/Scroll/Tags/Kawa" to="Tech_Info" method="_on_kawa_button_down"]
+[connection signal="button_down" from="Search/Scroll/Tags/Lua" to="Tech_Info" method="_on_lua_button_down"]
+[connection signal="button_down" from="Search/Scroll/Tags/Matlab" to="Tech_Info" method="_on_matlab_button_down"]
+[connection signal="button_down" from="Search/Scroll/Tags/Nasm" to="Tech_Info" method="_on_nasm_button_down"]
+[connection signal="button_down" from="Search/Scroll/Tags/OpenCL" to="Tech_Info" method="_on_open_cl_button_down"]
+[connection signal="button_down" from="Search/Scroll/Tags/Prolog" to="Tech_Info" method="_on_prolog_button_down"]
+[connection signal="button_down" from="Search/Scroll/Tags/QBasic" to="Tech_Info" method="_on_q_basic_button_down"]
+[connection signal="button_down" from="Search/Scroll/Tags/Scratch" to="Tech_Info" method="_on_scratch_button_down"]
+[connection signal="button_down" from="Search/Scroll/Tags/TypeScript" to="Tech_Info" method="_on_type_script_button_down"]
+[connection signal="button_down" from="Search/Scroll/Tags/Unicon" to="Tech_Info" method="_on_unicon_button_down"]
+[connection signal="button_down" from="Search/Scroll/Tags/Visual_Basic" to="Tech_Info" method="_on_visual_basic_button_down"]
+[connection signal="button_down" from="Search/Scroll/Tags/WebGL" to="Tech_Info" method="_on_web_gl_button_down"]
+[connection signal="button_down" from="Search/Scroll/Tags/Xojo" to="Tech_Info" method="_on_xojo_button_down"]
+[connection signal="button_down" from="Search/Scroll/Tags/Yorick" to="Tech_Info" method="_on_yorick_button_down"]
+[connection signal="button_down" from="Search/Scroll/Tags/Zig" to="Tech_Info" method="_on_zig_button_down"]
+[connection signal="request_completed" from="Tech_Info" to="Tech_Info" method="_on_request_completed"]
+[connection signal="request_completed" from="Recommend" to="Recommend" method="_on_request_completed"]
 [connection signal="timeout" from="Label/Timer" to="Label" method="_on_timer_timeout"]

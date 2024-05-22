@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://co2w5wjbbv485"]
 
-[ext_resource type="Script" path="res://menu/scripts/api.gd" id="1_74nvv"]
+[ext_resource type="Script" path="res://menu/scripts/api_tech_info.gd" id="1_74nvv"]
 
 [node name="HTTPRequest" type="HTTPRequest"]
 use_threads = true
