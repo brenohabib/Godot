@@ -29,6 +29,5 @@ func _on_searchbar_text_changed(text):
 		else:
 			button.hide()
 
-
 func _on_exit_pressed():
 	get_tree().quit()

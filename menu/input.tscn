@@ -1,6 +1,5 @@
-[gd_scene load_steps=33 format=3 uid="uid://b28inqgtkbjsc"]
+[gd_scene load_steps=39 format=3 uid="uid://b28inqgtkbjsc"]
 
-[ext_resource type="Script" path="res://menu/search.gd" id="1_n63fm"]
 [ext_resource type="Script" path="res://menu/scripts/api_tech_info.gd" id="2_hf1ev"]
 [ext_resource type="Texture2D" uid="uid://8rg6foaylyqu" path="res://menu/images/python-icon-512x509-pb65l7gl.png" id="2_vju1g"]
 [ext_resource type="Texture2D" uid="uid://balq7n5cc4gvb" path="res://menu/images/Basic.jpg" id="3_5p74s"]
@@ -10,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://mi6gh6nciusx" path="res://menu/images/elixir_lang_logo_icon_169207.png" id="4_5623y"]
 [ext_resource type="Texture2D" uid="uid://bxct7m1h8rmug" path="res://menu/images/1200px-C_Programming_Language.svg.png" id="4_bvf5n"]
 [ext_resource type="Texture2D" uid="uid://savvh4ey2xyb" path="res://menu/images/django-icon-1606x2048-lwmw1z73.png" id="5_g4ihx"]
+[ext_resource type="Script" path="res://menu/scripts/search.gd" id="5_oogx5"]
+[ext_resource type="StyleBox" uid="uid://c13kn42k4p0vs" path="res://menu/styles/tab/tab_style.tres" id="5_shc3o"]
 [ext_resource type="Texture2D" uid="uid://vkra6a8npwhd" path="res://menu/images/programming-language-flask-icon-512x457-79fa8wsi.png" id="6_n4en0"]
 [ext_resource type="Texture2D" uid="uid://d30b60ui4v41j" path="res://menu/images/React-icon.svg.png" id="7_mn0rd"]
 [ext_resource type="Texture2D" uid="uid://bnppsxbwdd70d" path="res://menu/images/1200px-Go_Logo_Blue.svg.png" id="8_1kkju"]
@@ -33,6 +34,57 @@
 [ext_resource type="Texture2D" uid="uid://dxrnxb22ypcnl" path="res://menu/images/Zig.png" id="28_lijvx"]
 [ext_resource type="PackedScene" uid="uid://ca68fog7k4vld" path="res://menu/ItenPopup.tscn" id="31_kem2r"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_02246"]
+bg_color = Color(0, 0, 0, 0.196078)
+border_width_left = 450
+border_width_right = 450
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+anti_aliasing_size = 0.5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pm1uq"]
+content_margin_left = 8.0
+content_margin_right = 8.0
+bg_color = Color(0.109804, 0.109804, 0.109804, 1)
+border_width_bottom = 1
+border_color = Color(0.964706, 0.964706, 0.964706, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+shadow_color = Color(1, 1, 1, 0.6)
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbhbe"]
+content_margin_left = 8.0
+content_margin_right = 8.0
+bg_color = Color(0.109804, 0.109804, 0.109804, 1)
+border_width_bottom = 1
+border_color = Color(0.964706, 0.964706, 0.964706, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+shadow_color = Color(1, 1, 1, 0.6)
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l6cjl"]
+bg_color = Color(0, 0, 0, 0.556863)
+border_width_bottom = 1
+border_color = Color(0.964706, 0.964706, 0.964706, 0.427451)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+shadow_color = Color(1, 1, 1, 0.34902)
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eyivu"]
+bg_color = Color(0.109804, 0.109804, 0.109804, 1)
+border_width_bottom = 1
+border_color = Color(0.964706, 0.964706, 0.964706, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+shadow_color = Color(1, 1, 1, 0.6)
+shadow_size = 1
+
 [node name="Input" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -54,28 +106,31 @@ layout_mode = 2
 
 [node name="ExitBox" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 8
 
 [node name="Exit" type="Button" parent="PanelContainer/VBoxContainer/ExitBox"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
-text = "EXIT"
+text = "Exit"
 
-[node name="Erro" type="Label" parent="PanelContainer/VBoxContainer"]
+[node name="ErrorDivide" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="Erro" type="Label" parent="PanelContainer/VBoxContainer/ErrorDivide"]
 visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.219608)
+theme_override_styles/normal = SubResource("StyleBoxFlat_02246")
 text = "Erro ao fazer a requisição"
+horizontal_alignment = 1
 script = ExtResource("3_ldcwa")
 
-[node name="Timer" type="Timer" parent="PanelContainer/VBoxContainer/Erro"]
+[node name="Timer" type="Timer" parent="PanelContainer/VBoxContainer/ErrorDivide/Erro"]
 wait_time = 4.0
 one_shot = true
-
-[node name="UPPER_DIVIDE" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 25)
-layout_mode = 2
 
 [node name="Tech_Info" type="HTTPRequest" parent="PanelContainer/VBoxContainer"]
 timeout = 1.0
@@ -84,15 +139,26 @@ script = ExtResource("2_hf1ev")
 [node name="Recommend" type="HTTPRequest" parent="PanelContainer/VBoxContainer"]
 script = ExtResource("3_fpn1f")
 
+[node name="ItenPopup" parent="PanelContainer/VBoxContainer" instance=ExtResource("31_kem2r")]
+visible = false
+
 [node name="tabs" type="TabContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_stretch_ratio = 10.25
+theme_override_font_sizes/font_size = 17
+theme_override_styles/tab_selected = SubResource("StyleBoxFlat_pm1uq")
+theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_tbhbe")
+theme_override_styles/tab_unselected = ExtResource("5_shc3o")
+theme_override_styles/tab_disabled = SubResource("StyleBoxFlat_l6cjl")
+theme_override_styles/tab_focus = SubResource("StyleBoxFlat_eyivu")
 
 [node name="Search" type="LineEdit" parent="PanelContainer/VBoxContainer/tabs"]
 layout_mode = 2
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.0
+focus_mode = 1
 placeholder_text = "Procure uma tecnologia"
-script = ExtResource("1_n63fm")
+script = ExtResource("5_oogx5")
 
 [node name="Scroll" type="ScrollContainer" parent="PanelContainer/VBoxContainer/tabs/Search"]
 layout_mode = 1
@@ -103,6 +169,7 @@ offset_top = 33.0
 offset_bottom = 522.0
 grow_horizontal = 2
 grow_vertical = 2
+follow_focus = true
 
 [node name="Tags" type="VBoxContainer" parent="PanelContainer/VBoxContainer/tabs/Search/Scroll"]
 layout_mode = 2
@@ -325,13 +392,11 @@ alignment = 0
 icon_alignment = 2
 expand_icon = true
 
-[node name="ItenPopup" parent="PanelContainer/VBoxContainer" instance=ExtResource("31_kem2r")]
-visible = false
-
 [connection signal="pressed" from="PanelContainer/VBoxContainer/ExitBox/Exit" to="PanelContainer/VBoxContainer/tabs/Search" method="_on_exit_pressed"]
-[connection signal="timeout" from="PanelContainer/VBoxContainer/Erro/Timer" to="PanelContainer/VBoxContainer/Erro" method="_on_timer_timeout"]
+[connection signal="timeout" from="PanelContainer/VBoxContainer/ErrorDivide/Erro/Timer" to="PanelContainer/VBoxContainer/ErrorDivide/Erro" method="_on_timer_timeout"]
 [connection signal="request_completed" from="PanelContainer/VBoxContainer/Tech_Info" to="PanelContainer/VBoxContainer/Tech_Info" method="_on_request_completed"]
 [connection signal="request_completed" from="PanelContainer/VBoxContainer/Recommend" to="PanelContainer/VBoxContainer/Recommend" method="_on_request_completed"]
+[connection signal="close_requested" from="PanelContainer/VBoxContainer/ItenPopup" to="PanelContainer/VBoxContainer/Tech_Info" method="_on_iten_popup_close_requested"]
 [connection signal="text_changed" from="PanelContainer/VBoxContainer/tabs/Search" to="PanelContainer/VBoxContainer/tabs/Search" method="_on_searchbar_text_changed"]
 [connection signal="button_down" from="PanelContainer/VBoxContainer/tabs/Search/Scroll/Tags/Angular" to="PanelContainer/VBoxContainer/Tech_Info" method="_on_angular_button_down"]
 [connection signal="button_down" from="PanelContainer/VBoxContainer/tabs/Search/Scroll/Tags/Basic" to="PanelContainer/VBoxContainer/Tech_Info" method="_on_basic_button_down"]
@@ -360,4 +425,3 @@ visible = false
 [connection signal="button_down" from="PanelContainer/VBoxContainer/tabs/Search/Scroll/Tags/Xojo" to="PanelContainer/VBoxContainer/Tech_Info" method="_on_xojo_button_down"]
 [connection signal="button_down" from="PanelContainer/VBoxContainer/tabs/Search/Scroll/Tags/Yorick" to="PanelContainer/VBoxContainer/Tech_Info" method="_on_yorick_button_down"]
 [connection signal="button_down" from="PanelContainer/VBoxContainer/tabs/Search/Scroll/Tags/Zig" to="PanelContainer/VBoxContainer/Tech_Info" method="_on_zig_button_down"]
-[connection signal="close_requested" from="PanelContainer/VBoxContainer/ItenPopup" to="PanelContainer/VBoxContainer/Tech_Info" method="_on_iten_popup_close_requested"]
