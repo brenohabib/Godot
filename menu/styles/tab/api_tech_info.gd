@@ -10,8 +10,8 @@ signal recommendations_received(data)
 func popup(data: Dictionary):
 	iten_popup.show()
 	var aux = str(data["tech_info"][0]).replace("{", "").replace("}", "").replace("\"", "")
-	aux = aux.replace("name:", "Nome :").replace("category:", "Categoria :").replace("difficulty:", "Dificuldade :")
-	aux = aux.replace("popularity:", "Popularidade :")
+	aux = aux.replace("name:", "Name :").replace("category:", "Category :").replace("difficulty:", "Difficulty :")
+	aux = aux.replace("popularity:", "Popularity :")
 
 	iten_popup.get_node("MarginContainer/HBoxContainer/VBoxContainer/Name").text = aux.get_slice(",", 2)
 	iten_popup.get_node("MarginContainer/HBoxContainer/VBoxContainer/Category").text = aux.get_slice(",", 0)

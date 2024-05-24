@@ -1,8 +1,23 @@
-[gd_scene format=3 uid="uid://ca68fog7k4vld"]
+[gd_scene load_steps=3 format=3 uid="uid://ca68fog7k4vld"]
+
+[ext_resource type="StyleBox" uid="uid://bgvw6tockiqsx" path="res://menu/styles/menu/fundo_menu.tres" id="1_e1rmc"]
+[ext_resource type="StyleBox" uid="uid://mdea5ud1rldu" path="res://menu/styles/menu/frente_menu.tres" id="2_e4b5l"]
 
 [node name="ItenPopup" type="Window"]
 initial_position = 1
 size = Vector2i(500, 500)
+
+[node name="Fundo" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("1_e1rmc")
+
+[node name="Frente" type="PanelContainer" parent="Fundo"]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_e4b5l")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -18,7 +33,7 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 2
 
 [node name="DIVIDE" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(5, 0)
+custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
@@ -27,9 +42,18 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 
 [node name="DIVIDE" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 15)
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
-[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Name" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "\"Lorem\""
+
+[node name="Category" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Difficulty" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Popularity" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2

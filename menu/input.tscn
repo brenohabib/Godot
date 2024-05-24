@@ -1,6 +1,8 @@
 [gd_scene load_steps=46 format=3 uid="uid://b28inqgtkbjsc"]
 
+[ext_resource type="StyleBox" uid="uid://bgvw6tockiqsx" path="res://menu/styles/menu/fundo_menu.tres" id="1_h41kc"]
 [ext_resource type="Script" path="res://menu/scripts/api_tech_info.gd" id="2_hf1ev"]
+[ext_resource type="StyleBox" uid="uid://mdea5ud1rldu" path="res://menu/styles/menu/frente_menu.tres" id="2_rhej3"]
 [ext_resource type="Texture2D" uid="uid://8rg6foaylyqu" path="res://menu/images/python-icon-512x509-pb65l7gl.png" id="2_vju1g"]
 [ext_resource type="Texture2D" uid="uid://balq7n5cc4gvb" path="res://menu/images/Basic.jpg" id="3_5p74s"]
 [ext_resource type="Script" path="res://menu/scripts/api_recommend.gd" id="3_fpn1f"]
@@ -34,16 +36,6 @@
 [ext_resource type="Texture2D" uid="uid://bmhpi13rqi75u" path="res://menu/images/Yorick.png" id="27_qsu38"]
 [ext_resource type="Texture2D" uid="uid://dxrnxb22ypcnl" path="res://menu/images/Zig.png" id="28_lijvx"]
 [ext_resource type="PackedScene" uid="uid://ca68fog7k4vld" path="res://menu/ItenPopup.tscn" id="31_kem2r"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_okwb8"]
-bg_color = Color(0.286275, 0.576471, 0.576471, 1)
-border_width_top = 16
-border_color = Color(0.286275, 0.576471, 0.576471, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w0bqx"]
-bg_color = Color(0.560784, 0.796078, 0.796078, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_02246"]
 bg_color = Color(0, 0, 0, 0.196078)
@@ -97,7 +89,7 @@ corner_radius_top_right = 10
 shadow_color = Color(1, 1, 1, 0.6)
 shadow_size = 1
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ooub"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bibx4"]
 content_margin_left = 4.0
 content_margin_right = 16.0
 bg_color = Color(0.32549, 0.32549, 0.32549, 1)
@@ -106,12 +98,12 @@ border_width_right = 4
 border_width_bottom = 4
 border_color = Color(0.917647, 0.564706, 0.0352941, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gydnk"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ryong"]
 content_margin_left = 8.0
 content_margin_right = 16.0
 bg_color = Color(0.32549, 0.32549, 0.32549, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b7xof"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b6l1o"]
 content_margin_left = 8.0
 content_margin_top = 4.0
 content_margin_right = 16.0
@@ -124,10 +116,10 @@ Button/colors/font_hover_color = Color(0, 0, 0, 1)
 Button/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 Button/colors/font_pressed_color = Color(0, 0, 0, 1)
 Button/font_sizes/font_size = 36
-Button/styles/focus = SubResource("StyleBoxFlat_5ooub")
-Button/styles/hover = SubResource("StyleBoxFlat_gydnk")
+Button/styles/focus = SubResource("StyleBoxFlat_bibx4")
+Button/styles/hover = SubResource("StyleBoxFlat_ryong")
 Button/styles/normal = ExtResource("7_ufypq")
-Button/styles/pressed = SubResource("StyleBoxFlat_b7xof")
+Button/styles/pressed = SubResource("StyleBoxFlat_b6l1o")
 
 [node name="Input" type="Control"]
 layout_mode = 3
@@ -144,11 +136,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_okwb8")
+theme_override_styles/panel = ExtResource("1_h41kc")
 
 [node name="Frente" type="PanelContainer" parent="Fundo"]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_w0bqx")
+theme_override_styles/panel = ExtResource("2_rhej3")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Fundo"]
 layout_mode = 2
