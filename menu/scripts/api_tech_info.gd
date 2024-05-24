@@ -1,22 +1,21 @@
 extends HTTPRequest
 
 @onready var http_request = self
-@onready var iten_popup = $"../ItenPopup"
+@onready var side_menu = $"../../../SideMenu"
 
 const TECH_URL = "http://127.0.0.1:8080/tech_info"
 signal recommendations_received(data)
 
 
 func popup(data: Dictionary):
-	iten_popup.show()
 	var aux = str(data["tech_info"][0]).replace("{", "").replace("}", "").replace("\"", "")
 	aux = aux.replace("name:", "Nome :").replace("category:", "Categoria :").replace("difficulty:", "Dificuldade :")
 	aux = aux.replace("popularity:", "Popularidade :")
 
-	iten_popup.get_node("MarginContainer/HBoxContainer/VBoxContainer/Name").text = aux.get_slice(",", 2)
-	iten_popup.get_node("MarginContainer/HBoxContainer/VBoxContainer/Category").text = aux.get_slice(",", 0)
-	iten_popup.get_node("MarginContainer/HBoxContainer/VBoxContainer/Difficulty").text = aux.get_slice(",", 1)
-	iten_popup.get_node("MarginContainer/HBoxContainer/VBoxContainer/Popularity").text = aux.get_slice(",", 3)
+	side_menu.get_node("MarginContainer/HBoxContainer/VBoxContainer/Name").text = aux.get_slice(",", 2)
+	side_menu.get_node("MarginContainer/HBoxContainer/VBoxContainer/Category").text = aux.get_slice(",", 0)
+	side_menu.get_node("MarginContainer/HBoxContainer/VBoxContainer/Difficulty").text = aux.get_slice(",", 1)
+	side_menu.get_node("MarginContainer/HBoxContainer/VBoxContainer/Popularity").text = aux.get_slice(",", 3)
 
 func _on_python_button_down():
 	send_request("python")
@@ -117,5 +116,3 @@ func _on_request_completed(_result, _response_code, _headers, body):
 	http_request.cancel_request()
 	recommendations_received.emit(data)
 	
-func _on_iten_popup_close_requested():
-	iten_popup.hide()

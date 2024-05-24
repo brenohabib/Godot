@@ -126,6 +126,7 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -359.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -169,9 +170,6 @@ script = ExtResource("2_hf1ev")
 
 [node name="Recommend" type="HTTPRequest" parent="Fundo/VBoxContainer"]
 script = ExtResource("3_fpn1f")
-
-[node name="ItenPopup" parent="Fundo/VBoxContainer" instance=ExtResource("31_kem2r")]
-visible = false
 
 [node name="Tab" type="TabContainer" parent="Fundo/VBoxContainer"]
 layout_mode = 2
@@ -426,10 +424,17 @@ alignment = 0
 icon_alignment = 2
 expand_icon = true
 
+[node name="SideMenu" parent="." instance=ExtResource("31_kem2r")]
+layout_mode = 1
+anchor_left = 1.0
+anchor_right = 1.455
+anchor_bottom = 1.0
+offset_right = 0.184937
+offset_bottom = 0.0
+
 [connection signal="timeout" from="Fundo/VBoxContainer/ErrorDivide/Erro/Timer" to="Fundo/VBoxContainer/ErrorDivide/Erro" method="_on_timer_timeout"]
 [connection signal="request_completed" from="Fundo/VBoxContainer/Tech_Info" to="Fundo/VBoxContainer/Tech_Info" method="_on_request_completed"]
 [connection signal="request_completed" from="Fundo/VBoxContainer/Recommend" to="Fundo/VBoxContainer/Recommend" method="_on_request_completed"]
-[connection signal="close_requested" from="Fundo/VBoxContainer/ItenPopup" to="Fundo/VBoxContainer/Tech_Info" method="_on_iten_popup_close_requested"]
 [connection signal="text_changed" from="Fundo/VBoxContainer/Tab/Search" to="Fundo/VBoxContainer/Tab/Search" method="_on_searchbar_text_changed"]
 [connection signal="button_down" from="Fundo/VBoxContainer/Tab/Search/Scroll/Tags/Angular" to="Fundo/VBoxContainer/Tech_Info" method="_on_angular_button_down"]
 [connection signal="button_down" from="Fundo/VBoxContainer/Tab/Search/Scroll/Tags/Basic" to="Fundo/VBoxContainer/Tech_Info" method="_on_basic_button_down"]
