@@ -35,7 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://b88ru42ym1dwq" path="res://menu/images/Xojo_Company_Logo.png" id="26_nk6wp"]
 [ext_resource type="Texture2D" uid="uid://bmhpi13rqi75u" path="res://menu/images/Yorick.png" id="27_qsu38"]
 [ext_resource type="Texture2D" uid="uid://dxrnxb22ypcnl" path="res://menu/images/Zig.png" id="28_lijvx"]
-[ext_resource type="PackedScene" uid="uid://ca68fog7k4vld" path="res://menu/ItenPopup.tscn" id="31_kem2r"]
+[ext_resource type="PackedScene" uid="uid://ca68fog7k4vld" path="res://menu/side_menu.tscn" id="31_kem2r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_02246"]
 bg_color = Color(0, 0, 0, 0.196078)
@@ -121,7 +121,7 @@ Button/styles/hover = SubResource("StyleBoxFlat_ryong")
 Button/styles/normal = ExtResource("7_ufypq")
 Button/styles/pressed = SubResource("StyleBoxFlat_b6l1o")
 
-[node name="Input" type="Control"]
+[node name="Menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -130,27 +130,46 @@ offset_right = -359.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Fundo" type="PanelContainer" parent="."]
+[node name="Control" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_right = 0.966
+anchor_bottom = 0.84
+offset_right = -0.0380249
+offset_bottom = -0.320007
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Fundo" type="PanelContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.035
+anchor_bottom = 1.191
+offset_right = 0.189941
+offset_bottom = 0.0959473
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("1_h41kc")
 
-[node name="Frente" type="PanelContainer" parent="Fundo"]
+[node name="Frente" type="PanelContainer" parent="Control/Fundo"]
 layout_mode = 2
 theme_override_styles/panel = ExtResource("2_rhej3")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Fundo"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
 layout_mode = 2
+anchor_left = 0.012
+anchor_top = 0.029
+anchor_right = 1.027
+anchor_bottom = 1.191
+offset_left = -0.192
+offset_top = 0.223999
+offset_right = 0.317932
+offset_bottom = 0.0959473
 
-[node name="ErrorDivide" type="MarginContainer" parent="Fundo/VBoxContainer"]
+[node name="ErrorDivide" type="MarginContainer" parent="Control/VBoxContainer"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 
-[node name="Erro" type="Label" parent="Fundo/VBoxContainer/ErrorDivide"]
+[node name="Erro" type="Label" parent="Control/VBoxContainer/ErrorDivide"]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 4
@@ -161,20 +180,12 @@ text = "Erro ao fazer a requisição"
 horizontal_alignment = 1
 script = ExtResource("3_ldcwa")
 
-[node name="Timer" type="Timer" parent="Fundo/VBoxContainer/ErrorDivide/Erro"]
+[node name="Timer" type="Timer" parent="Control/VBoxContainer/ErrorDivide/Erro"]
 wait_time = 4.0
 one_shot = true
 
-[node name="Tech_Info" type="HTTPRequest" parent="Fundo/VBoxContainer"]
-timeout = 1.0
-script = ExtResource("2_hf1ev")
-
-[node name="Recommend" type="HTTPRequest" parent="Fundo/VBoxContainer"]
-script = ExtResource("3_fpn1f")
-
-[node name="Tab" type="TabContainer" parent="Fundo/VBoxContainer"]
+[node name="Tab" type="TabContainer" parent="Control/VBoxContainer"]
 layout_mode = 2
-size_flags_stretch_ratio = 10.25
 theme_override_constants/side_margin = 8
 theme_override_font_sizes/font_size = 18
 theme_override_styles/tab_selected = SubResource("StyleBoxFlat_pm1uq")
@@ -183,7 +194,7 @@ theme_override_styles/tab_unselected = ExtResource("5_shc3o")
 theme_override_styles/tab_disabled = SubResource("StyleBoxFlat_l6cjl")
 theme_override_styles/tab_focus = SubResource("StyleBoxFlat_eyivu")
 
-[node name="Search" type="LineEdit" parent="Fundo/VBoxContainer/Tab"]
+[node name="Search" type="LineEdit" parent="Control/VBoxContainer/Tab"]
 layout_mode = 2
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.0
@@ -191,25 +202,26 @@ focus_mode = 1
 placeholder_text = "Procure uma tecnologia"
 script = ExtResource("5_oogx5")
 
-[node name="Scroll" type="ScrollContainer" parent="Fundo/VBoxContainer/Tab/Search"]
+[node name="Scroll" type="ScrollContainer" parent="Control/VBoxContainer/Tab/Search"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
+anchor_top = 1.065
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 33.0
-offset_bottom = 504.0
+anchor_bottom = 17.258
+offset_top = -0.0150032
+offset_bottom = 0.00195313
 grow_horizontal = 2
 grow_vertical = 2
 follow_focus = true
 
-[node name="Tags" type="VBoxContainer" parent="Fundo/VBoxContainer/Tab/Search/Scroll"]
+[node name="Tags" type="VBoxContainer" parent="Control/VBoxContainer/Tab/Search/Scroll"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.0
 theme = SubResource("Theme_akl3w")
 theme_override_constants/separation = 4
 
-[node name="Angular" type="Button" parent="Fundo/VBoxContainer/Tab/Search/Scroll/Tags"]
+[node name="Angular" type="Button" parent="Control/VBoxContainer/Tab/Search/Scroll/Tags"]
 layout_mode = 2
 text = "Angular"
 icon = ExtResource("8_w0rea")
@@ -217,7 +229,7 @@ alignment = 0
 icon_alignment = 2
 expand_icon = true
 
-[node name="Basic" type="Button" parent="Fundo/VBoxContainer/Tab/Search/Scroll/Tags"]
+[node name="Basic" type="Button" parent="Control/VBoxContainer/Tab/Search/Scroll/Tags"]
 layout_mode = 2
 text = "BASIC"
 icon = ExtResource("3_5p74s")
@@ -225,7 +237,7 @@ alignment = 0
 icon_alignment = 2
 expand_icon = true
 
-[node name="C" type="Button" parent="Fundo/VBoxContainer/Tab/Search/Scroll/Tags"]
+[node name="C" type="Button" parent="Control/VBoxContainer/Tab/Search/Scroll/Tags"]
 layout_mode = 2
 text = "C"
 icon = ExtResource("4_bvf5n")
@@ -233,7 +245,7 @@ alignment = 0
 icon_alignment = 2
 expand_icon = true
 
-[node name="Django" type="Button" parent="Fundo/VBoxContainer/Tab/Search/Scroll/Tags"]
+[node name="Django" type="Button" parent="Control/VBoxContainer/Tab/Search/Scroll/Tags"]
 layout_mode = 2
 text = "Django"
 icon = ExtResource("5_g4ihx")
@@ -241,7 +253,7 @@ alignment = 0
 icon_alignment = 2
 expand_icon = true
 
-[node name="Elixir" type="Button" parent="Fundo/VBoxContainer/Tab/Search/Scroll/Tags"]
+[node name="Elixir" type="Button" parent="Control/VBoxContainer/Tab/Search/Scroll/Tags"]
 layout_mode = 2
 text = "Elixir"
 icon = ExtResource("4_5623y")
@@ -249,7 +261,7 @@ alignment = 0
 icon_alignment = 2
 expand_icon = true
 
-[node name="Flask" type="Button" parent="Fundo/VBoxContainer/Tab/Search/Scroll/Tags"]
+[node name="Flask" type="Button" parent="Control/VBoxContainer/Tab/Search/Scroll/Tags"]
 layout_mode = 2
 text = "Flask"
 icon = ExtResource("6_n4en0")
@@ -257,7 +269,7 @@ alignment = 0
 icon_alignment = 2
 expand_icon = true
 
-[node name="Go" type="Button" parent="Fundo/VBoxContainer/Tab/Search/Scroll/Tags"]
+[node name="Go" type="Button" parent="Control/VBoxContainer/Tab/Search/Scroll/Tags"]
 layout_mode = 2
 text = "Go"
 icon = ExtResource("8_1kkju")
@@ -265,7 +277,7 @@ alignment = 0
 icon_alignment = 2
 expand_icon = true
 
-[node name="Haskell" type="Button" parent="Fundo/VBoxContainer/Tab/Search/Scroll/Tags"]
+[node name="Haskell" type="Button" parent="Control/VBoxContainer/Tab/Search/Scroll/Tags"]
 layout_mode = 2
 text = "Haskell"
 icon = ExtResource("9_1hh2u")
@@ -273,7 +285,7 @@ alignment = 0
 icon_alignment = 2
 expand_icon = true
 
-[node name="Itk" type="Button" parent="Fundo/VBoxContainer/Tab/Search/Scroll/Tags"]
+[node name="Itk" type="Button" parent="Control/VBoxContainer/Tab/Search/Scroll/Tags"]
 layout_mode = 2
 text = "Itk"
 icon = ExtResource("10_3f5lh")
@@ -281,7 +293,7 @@ alignment = 0
 icon_alignment = 2
 expand_icon = true
 
-[node name="Java" type="Button" parent="Fundo/VBoxContainer/Tab/Search/Scroll/Tags"]
+[node name="Java" type="Button" parent="Control/VBoxContainer/Tab/Search/Scroll/Tags"]
 layout_mode = 2
 text = "Java"
 icon = ExtResource("3_kmblk")
@@ -289,7 +301,7 @@ alignment = 0
 icon_alignment = 2
 expand_icon = true
 
-[node name="Python" type="Button" parent="Fundo/VBoxContainer/Tab/Search/Scroll/Tags"]
+[node name="Python" type="Button" parent="Control/VBoxContainer/Tab/Search/Scroll/Tags"]
 layout_mode = 2
 text = "Python"
 icon = ExtResource("2_vju1g")
@@ -297,7 +309,7 @@ alignment = 0
 icon_alignment = 2
 expand_icon = true
 
-[node name="React" type="Button" parent="Fundo/VBoxContainer/Tab/Search/Scroll/Tags"]
+[node name="React" type="Button" parent="Control/VBoxContainer/Tab/Search/Scroll/Tags"]
 layout_mode = 2
 text = "React"
 icon = ExtResource("7_mn0rd")
@@ -305,7 +317,7 @@ alignment = 0
 icon_alignment = 2
 expand_icon = true
 
-[node name="Kawa" type="Button" parent="Fundo/VBoxContainer/Tab/Search/Scroll/Tags"]
+[node name="Kawa" type="Button" parent="Control/VBoxContainer/Tab/Search/Scroll/Tags"]
 layout_mode = 2
 text = "Kawa"
 icon = ExtResource("14_e3tt8")
@@ -313,7 +325,7 @@ alignment = 0
 icon_alignment = 2
 expand_icon = true
 
-[node name="Lua" type="Button" parent="Fundo/VBoxContainer/Tab/Search/Scroll/Tags"]
+[node name="Lua" type="Button" parent="Control/VBoxContainer/Tab/Search/Scroll/Tags"]
 layout_mode = 2
 text = "Lua"
 icon = ExtResource("15_3cppn")
@@ -321,7 +333,7 @@ alignment = 0
 icon_alignment = 2
 expand_icon = true
 
-[node name="Matlab" type="Button" parent="Fundo/VBoxContainer/Tab/Search/Scroll/Tags"]
+[node name="Matlab" type="Button" parent="Control/VBoxContainer/Tab/Search/Scroll/Tags"]
 layout_mode = 2
 text = "MATLAB"
 icon = ExtResource("16_pembb")
@@ -329,7 +341,7 @@ alignment = 0
 icon_alignment = 2
 expand_icon = true
 
-[node name="Nasm" type="Button" parent="Fundo/VBoxContainer/Tab/Search/Scroll/Tags"]
+[node name="Nasm" type="Button" parent="Control/VBoxContainer/Tab/Search/Scroll/Tags"]
 layout_mode = 2
 text = "Nasm"
 icon = ExtResource("17_dui0g")
@@ -337,7 +349,7 @@ alignment = 0
 icon_alignment = 2
 expand_icon = true
 
-[node name="OpenCL" type="Button" parent="Fundo/VBoxContainer/Tab/Search/Scroll/Tags"]
+[node name="OpenCL" type="Button" parent="Control/VBoxContainer/Tab/Search/Scroll/Tags"]
 layout_mode = 2
 text = "OpenCL"
 icon = ExtResource("18_rl0vi")
@@ -345,7 +357,7 @@ alignment = 0
 icon_alignment = 2
 expand_icon = true
 
-[node name="Prolog" type="Button" parent="Fundo/VBoxContainer/Tab/Search/Scroll/Tags"]
+[node name="Prolog" type="Button" parent="Control/VBoxContainer/Tab/Search/Scroll/Tags"]
 layout_mode = 2
 text = "Prolog"
 icon = ExtResource("19_8am73")
@@ -353,7 +365,7 @@ alignment = 0
 icon_alignment = 2
 expand_icon = true
 
-[node name="QBasic" type="Button" parent="Fundo/VBoxContainer/Tab/Search/Scroll/Tags"]
+[node name="QBasic" type="Button" parent="Control/VBoxContainer/Tab/Search/Scroll/Tags"]
 layout_mode = 2
 text = "QBasic"
 icon = ExtResource("20_ijl6i")
@@ -361,7 +373,7 @@ alignment = 0
 icon_alignment = 2
 expand_icon = true
 
-[node name="Scratch" type="Button" parent="Fundo/VBoxContainer/Tab/Search/Scroll/Tags"]
+[node name="Scratch" type="Button" parent="Control/VBoxContainer/Tab/Search/Scroll/Tags"]
 layout_mode = 2
 text = "Scratch"
 icon = ExtResource("21_5vmvh")
@@ -369,7 +381,7 @@ alignment = 0
 icon_alignment = 2
 expand_icon = true
 
-[node name="TypeScript" type="Button" parent="Fundo/VBoxContainer/Tab/Search/Scroll/Tags"]
+[node name="TypeScript" type="Button" parent="Control/VBoxContainer/Tab/Search/Scroll/Tags"]
 layout_mode = 2
 text = "Typescript"
 icon = ExtResource("22_ihjcw")
@@ -377,7 +389,7 @@ alignment = 0
 icon_alignment = 2
 expand_icon = true
 
-[node name="Unicon" type="Button" parent="Fundo/VBoxContainer/Tab/Search/Scroll/Tags"]
+[node name="Unicon" type="Button" parent="Control/VBoxContainer/Tab/Search/Scroll/Tags"]
 layout_mode = 2
 text = "Unicon"
 icon = ExtResource("23_u8w4d")
@@ -385,7 +397,7 @@ alignment = 0
 icon_alignment = 2
 expand_icon = true
 
-[node name="Visual_Basic" type="Button" parent="Fundo/VBoxContainer/Tab/Search/Scroll/Tags"]
+[node name="Visual_Basic" type="Button" parent="Control/VBoxContainer/Tab/Search/Scroll/Tags"]
 layout_mode = 2
 text = "Visual Basic"
 icon = ExtResource("24_iicuc")
@@ -393,7 +405,7 @@ alignment = 0
 icon_alignment = 2
 expand_icon = true
 
-[node name="WebGL" type="Button" parent="Fundo/VBoxContainer/Tab/Search/Scroll/Tags"]
+[node name="WebGL" type="Button" parent="Control/VBoxContainer/Tab/Search/Scroll/Tags"]
 layout_mode = 2
 text = "WebGL"
 icon = ExtResource("25_4qdf6")
@@ -401,7 +413,7 @@ alignment = 0
 icon_alignment = 2
 expand_icon = true
 
-[node name="Xojo" type="Button" parent="Fundo/VBoxContainer/Tab/Search/Scroll/Tags"]
+[node name="Xojo" type="Button" parent="Control/VBoxContainer/Tab/Search/Scroll/Tags"]
 layout_mode = 2
 text = "Xojo"
 icon = ExtResource("26_nk6wp")
@@ -409,7 +421,7 @@ alignment = 0
 icon_alignment = 2
 expand_icon = true
 
-[node name="Yorick" type="Button" parent="Fundo/VBoxContainer/Tab/Search/Scroll/Tags"]
+[node name="Yorick" type="Button" parent="Control/VBoxContainer/Tab/Search/Scroll/Tags"]
 layout_mode = 2
 text = "Yorick"
 icon = ExtResource("27_qsu38")
@@ -417,13 +429,20 @@ alignment = 0
 icon_alignment = 2
 expand_icon = true
 
-[node name="Zig" type="Button" parent="Fundo/VBoxContainer/Tab/Search/Scroll/Tags"]
+[node name="Zig" type="Button" parent="Control/VBoxContainer/Tab/Search/Scroll/Tags"]
 layout_mode = 2
 text = "Zig"
 icon = ExtResource("28_lijvx")
 alignment = 0
 icon_alignment = 2
 expand_icon = true
+
+[node name="Recommend" type="HTTPRequest" parent="Control/VBoxContainer"]
+script = ExtResource("3_fpn1f")
+
+[node name="Tech_Info" type="HTTPRequest" parent="Control/VBoxContainer"]
+timeout = 1.0
+script = ExtResource("2_hf1ev")
 
 [node name="SideMenu" parent="." instance=ExtResource("31_kem2r")]
 layout_mode = 1
@@ -433,34 +452,34 @@ anchor_bottom = 1.0
 offset_right = 0.184937
 offset_bottom = 0.0
 
-[connection signal="timeout" from="Fundo/VBoxContainer/ErrorDivide/Erro/Timer" to="Fundo/VBoxContainer/ErrorDivide/Erro" method="_on_timer_timeout"]
-[connection signal="request_completed" from="Fundo/VBoxContainer/Tech_Info" to="Fundo/VBoxContainer/Tech_Info" method="_on_request_completed"]
-[connection signal="request_completed" from="Fundo/VBoxContainer/Recommend" to="Fundo/VBoxContainer/Recommend" method="_on_request_completed"]
-[connection signal="text_changed" from="Fundo/VBoxContainer/Tab/Search" to="Fundo/VBoxContainer/Tab/Search" method="_on_searchbar_text_changed"]
-[connection signal="button_down" from="Fundo/VBoxContainer/Tab/Search/Scroll/Tags/Angular" to="Fundo/VBoxContainer/Tech_Info" method="_on_angular_button_down"]
-[connection signal="button_down" from="Fundo/VBoxContainer/Tab/Search/Scroll/Tags/Basic" to="Fundo/VBoxContainer/Tech_Info" method="_on_basic_button_down"]
-[connection signal="button_down" from="Fundo/VBoxContainer/Tab/Search/Scroll/Tags/C" to="Fundo/VBoxContainer/Tech_Info" method="_on_c_button_down"]
-[connection signal="button_down" from="Fundo/VBoxContainer/Tab/Search/Scroll/Tags/Django" to="Fundo/VBoxContainer/Tech_Info" method="_on_django_button_down"]
-[connection signal="button_down" from="Fundo/VBoxContainer/Tab/Search/Scroll/Tags/Elixir" to="Fundo/VBoxContainer/Tech_Info" method="_on_elixir_button_down"]
-[connection signal="button_down" from="Fundo/VBoxContainer/Tab/Search/Scroll/Tags/Flask" to="Fundo/VBoxContainer/Tech_Info" method="_on_flask_button_down"]
-[connection signal="button_down" from="Fundo/VBoxContainer/Tab/Search/Scroll/Tags/Go" to="Fundo/VBoxContainer/Tech_Info" method="_on_go_button_down"]
-[connection signal="button_down" from="Fundo/VBoxContainer/Tab/Search/Scroll/Tags/Haskell" to="Fundo/VBoxContainer/Tech_Info" method="_on_haskell_button_down"]
-[connection signal="button_down" from="Fundo/VBoxContainer/Tab/Search/Scroll/Tags/Itk" to="Fundo/VBoxContainer/Tech_Info" method="_on_itk_button_down"]
-[connection signal="button_down" from="Fundo/VBoxContainer/Tab/Search/Scroll/Tags/Java" to="Fundo/VBoxContainer/Tech_Info" method="_on_java_button_down"]
-[connection signal="button_down" from="Fundo/VBoxContainer/Tab/Search/Scroll/Tags/Python" to="Fundo/VBoxContainer/Tech_Info" method="_on_python_button_down"]
-[connection signal="button_down" from="Fundo/VBoxContainer/Tab/Search/Scroll/Tags/React" to="Fundo/VBoxContainer/Tech_Info" method="_on_react_button_down"]
-[connection signal="button_down" from="Fundo/VBoxContainer/Tab/Search/Scroll/Tags/Kawa" to="Fundo/VBoxContainer/Tech_Info" method="_on_kawa_button_down"]
-[connection signal="button_down" from="Fundo/VBoxContainer/Tab/Search/Scroll/Tags/Lua" to="Fundo/VBoxContainer/Tech_Info" method="_on_lua_button_down"]
-[connection signal="button_down" from="Fundo/VBoxContainer/Tab/Search/Scroll/Tags/Matlab" to="Fundo/VBoxContainer/Tech_Info" method="_on_matlab_button_down"]
-[connection signal="button_down" from="Fundo/VBoxContainer/Tab/Search/Scroll/Tags/Nasm" to="Fundo/VBoxContainer/Tech_Info" method="_on_nasm_button_down"]
-[connection signal="button_down" from="Fundo/VBoxContainer/Tab/Search/Scroll/Tags/OpenCL" to="Fundo/VBoxContainer/Tech_Info" method="_on_open_cl_button_down"]
-[connection signal="button_down" from="Fundo/VBoxContainer/Tab/Search/Scroll/Tags/Prolog" to="Fundo/VBoxContainer/Tech_Info" method="_on_prolog_button_down"]
-[connection signal="button_down" from="Fundo/VBoxContainer/Tab/Search/Scroll/Tags/QBasic" to="Fundo/VBoxContainer/Tech_Info" method="_on_q_basic_button_down"]
-[connection signal="button_down" from="Fundo/VBoxContainer/Tab/Search/Scroll/Tags/Scratch" to="Fundo/VBoxContainer/Tech_Info" method="_on_scratch_button_down"]
-[connection signal="button_down" from="Fundo/VBoxContainer/Tab/Search/Scroll/Tags/TypeScript" to="Fundo/VBoxContainer/Tech_Info" method="_on_type_script_button_down"]
-[connection signal="button_down" from="Fundo/VBoxContainer/Tab/Search/Scroll/Tags/Unicon" to="Fundo/VBoxContainer/Tech_Info" method="_on_unicon_button_down"]
-[connection signal="button_down" from="Fundo/VBoxContainer/Tab/Search/Scroll/Tags/Visual_Basic" to="Fundo/VBoxContainer/Tech_Info" method="_on_visual_basic_button_down"]
-[connection signal="button_down" from="Fundo/VBoxContainer/Tab/Search/Scroll/Tags/WebGL" to="Fundo/VBoxContainer/Tech_Info" method="_on_web_gl_button_down"]
-[connection signal="button_down" from="Fundo/VBoxContainer/Tab/Search/Scroll/Tags/Xojo" to="Fundo/VBoxContainer/Tech_Info" method="_on_xojo_button_down"]
-[connection signal="button_down" from="Fundo/VBoxContainer/Tab/Search/Scroll/Tags/Yorick" to="Fundo/VBoxContainer/Tech_Info" method="_on_yorick_button_down"]
-[connection signal="button_down" from="Fundo/VBoxContainer/Tab/Search/Scroll/Tags/Zig" to="Fundo/VBoxContainer/Tech_Info" method="_on_zig_button_down"]
+[connection signal="timeout" from="Control/VBoxContainer/ErrorDivide/Erro/Timer" to="Control/VBoxContainer/ErrorDivide/Erro" method="_on_timer_timeout"]
+[connection signal="text_changed" from="Control/VBoxContainer/Tab/Search" to="Control/VBoxContainer/Tab/Search" method="_on_searchbar_text_changed"]
+[connection signal="button_down" from="Control/VBoxContainer/Tab/Search/Scroll/Tags/Angular" to="Control/VBoxContainer/Tech_Info" method="_on_angular_button_down"]
+[connection signal="button_down" from="Control/VBoxContainer/Tab/Search/Scroll/Tags/Basic" to="Control/VBoxContainer/Tech_Info" method="_on_basic_button_down"]
+[connection signal="button_down" from="Control/VBoxContainer/Tab/Search/Scroll/Tags/C" to="Control/VBoxContainer/Tech_Info" method="_on_c_button_down"]
+[connection signal="button_down" from="Control/VBoxContainer/Tab/Search/Scroll/Tags/Django" to="Control/VBoxContainer/Tech_Info" method="_on_django_button_down"]
+[connection signal="button_down" from="Control/VBoxContainer/Tab/Search/Scroll/Tags/Elixir" to="Control/VBoxContainer/Tech_Info" method="_on_elixir_button_down"]
+[connection signal="button_down" from="Control/VBoxContainer/Tab/Search/Scroll/Tags/Flask" to="Control/VBoxContainer/Tech_Info" method="_on_flask_button_down"]
+[connection signal="button_down" from="Control/VBoxContainer/Tab/Search/Scroll/Tags/Go" to="Control/VBoxContainer/Tech_Info" method="_on_go_button_down"]
+[connection signal="button_down" from="Control/VBoxContainer/Tab/Search/Scroll/Tags/Haskell" to="Control/VBoxContainer/Tech_Info" method="_on_haskell_button_down"]
+[connection signal="button_down" from="Control/VBoxContainer/Tab/Search/Scroll/Tags/Itk" to="Control/VBoxContainer/Tech_Info" method="_on_itk_button_down"]
+[connection signal="button_down" from="Control/VBoxContainer/Tab/Search/Scroll/Tags/Java" to="Control/VBoxContainer/Tech_Info" method="_on_java_button_down"]
+[connection signal="button_down" from="Control/VBoxContainer/Tab/Search/Scroll/Tags/Python" to="Control/VBoxContainer/Tech_Info" method="_on_python_button_down"]
+[connection signal="button_down" from="Control/VBoxContainer/Tab/Search/Scroll/Tags/React" to="Control/VBoxContainer/Tech_Info" method="_on_react_button_down"]
+[connection signal="button_down" from="Control/VBoxContainer/Tab/Search/Scroll/Tags/Kawa" to="Control/VBoxContainer/Tech_Info" method="_on_kawa_button_down"]
+[connection signal="button_down" from="Control/VBoxContainer/Tab/Search/Scroll/Tags/Lua" to="Control/VBoxContainer/Tech_Info" method="_on_lua_button_down"]
+[connection signal="button_down" from="Control/VBoxContainer/Tab/Search/Scroll/Tags/Matlab" to="Control/VBoxContainer/Tech_Info" method="_on_matlab_button_down"]
+[connection signal="button_down" from="Control/VBoxContainer/Tab/Search/Scroll/Tags/Nasm" to="Control/VBoxContainer/Tech_Info" method="_on_nasm_button_down"]
+[connection signal="button_down" from="Control/VBoxContainer/Tab/Search/Scroll/Tags/OpenCL" to="Control/VBoxContainer/Tech_Info" method="_on_open_cl_button_down"]
+[connection signal="button_down" from="Control/VBoxContainer/Tab/Search/Scroll/Tags/Prolog" to="Control/VBoxContainer/Tech_Info" method="_on_prolog_button_down"]
+[connection signal="button_down" from="Control/VBoxContainer/Tab/Search/Scroll/Tags/QBasic" to="Control/VBoxContainer/Tech_Info" method="_on_q_basic_button_down"]
+[connection signal="button_down" from="Control/VBoxContainer/Tab/Search/Scroll/Tags/Scratch" to="Control/VBoxContainer/Tech_Info" method="_on_scratch_button_down"]
+[connection signal="button_down" from="Control/VBoxContainer/Tab/Search/Scroll/Tags/TypeScript" to="Control/VBoxContainer/Tech_Info" method="_on_type_script_button_down"]
+[connection signal="button_down" from="Control/VBoxContainer/Tab/Search/Scroll/Tags/Unicon" to="Control/VBoxContainer/Tech_Info" method="_on_unicon_button_down"]
+[connection signal="button_down" from="Control/VBoxContainer/Tab/Search/Scroll/Tags/Visual_Basic" to="Control/VBoxContainer/Tech_Info" method="_on_visual_basic_button_down"]
+[connection signal="button_down" from="Control/VBoxContainer/Tab/Search/Scroll/Tags/WebGL" to="Control/VBoxContainer/Tech_Info" method="_on_web_gl_button_down"]
+[connection signal="button_down" from="Control/VBoxContainer/Tab/Search/Scroll/Tags/Xojo" to="Control/VBoxContainer/Tech_Info" method="_on_xojo_button_down"]
+[connection signal="button_down" from="Control/VBoxContainer/Tab/Search/Scroll/Tags/Yorick" to="Control/VBoxContainer/Tech_Info" method="_on_yorick_button_down"]
+[connection signal="button_down" from="Control/VBoxContainer/Tab/Search/Scroll/Tags/Zig" to="Control/VBoxContainer/Tech_Info" method="_on_zig_button_down"]
+[connection signal="request_completed" from="Control/VBoxContainer/Recommend" to="Control/VBoxContainer/Recommend" method="_on_request_completed"]
+[connection signal="request_completed" from="Control/VBoxContainer/Tech_Info" to="Control/VBoxContainer/Tech_Info" method="_on_request_completed"]
