@@ -1,6 +1,6 @@
 extends Control
 
-@onready var vbox = $Scroll/Tags
+@onready var vbox = $Tech/Buttons
 
 func _on_searchbar_text_changed(text):
 	var lower_text = text.to_lower()
@@ -28,6 +28,3 @@ func _on_searchbar_text_changed(text):
 			button.show()
 		else:
 			button.hide()
-
-func _on_exit_pressed():
-	get_tree().quit()
