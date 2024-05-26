@@ -4,12 +4,11 @@ extends HTTPRequest
 const RECOMMEND_URL = "http://127.0.0.1:8080/recommend"
 
 @onready var side_menu = $"../../../Side"
+var active_categories = []
 
 signal recommendations_received(data)
 
 
-# Store the active button categories
-var active_categories = []
 
 func _on_programming_language_toggled(toggled_on):
 	if toggled_on:
@@ -42,45 +41,45 @@ func _on_toolkit_toggled(toggled_on):
 
 func _on_popularity_high_toggled(toggled_on):
 	if toggled_on:
-		active_categories.append("popularity=high")
+		active_categories.append("popularity=alta")
 	else:
-		var index = active_categories.find("popularity=high")
+		var index = active_categories.find("popularity=alta")
 		active_categories.remove_at(index)
 
 func _on_popularity_medium_toggled(toggled_on):
 	if toggled_on:
-		active_categories.append("popularity=medium")
+		active_categories.append("popularity=media")
 	else:
-		var index = active_categories.find("popularity=medium")
+		var index = active_categories.find("popularity=media")
 		active_categories.remove_at(index)
 
 func _on_popularity_low_toggled(toggled_on):
 	if toggled_on:
-		active_categories.append("popularity=low")
+		active_categories.append("popularity=baixa")
 	else:
-		var index = active_categories.find("popularity=low")
+		var index = active_categories.find("popularity=baixa")
 		active_categories.remove_at(index)
 
 
 func _on_dificulty_high_toggled(toggled_on):
 	if toggled_on:
-		active_categories.append("difficulty=high")
+		active_categories.append("difficulty=alta")
 	else:
-		var index = active_categories.find("difficulty=high")
+		var index = active_categories.find("difficulty=alta")
 		active_categories.remove_at(index)
 
 func _on_dificulty_medium_toggled(toggled_on):
 	if toggled_on:
-		active_categories.append("difficulty=medium")
+		active_categories.append("difficulty=media")
 	else:
-		var index = active_categories.find("difficulty=medium")
+		var index = active_categories.find("difficulty=media")
 		active_categories.remove_at(index)
 
 func _on_dificulty_low_toggled(toggled_on):
 	if toggled_on:
-		active_categories.append("difficulty=low")
+		active_categories.append("difficulty=baixa")
 	else:
-		var index = active_categories.find("difficulty=low")
+		var index = active_categories.find("difficulty=baixa")
 		active_categories.remove_at(index)
 
 func send_request():

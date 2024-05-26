@@ -1,7 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://ca68fog7k4vld"]
+[gd_scene load_steps=7 format=3 uid="uid://ca68fog7k4vld"]
 
 [ext_resource type="StyleBox" uid="uid://bgvw6tockiqsx" path="res://menu/styles/menu/fundo_menu.tres" id="1_e1rmc"]
 [ext_resource type="StyleBox" uid="uid://mdea5ud1rldu" path="res://menu/styles/menu/frente_menu.tres" id="2_e4b5l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rnrsl"]
+bg_color = Color(1, 1, 1, 0.368627)
+
+[sub_resource type="Theme" id="Theme_xd22m"]
+Label/styles/normal = SubResource("StyleBoxFlat_rnrsl")
+
+[sub_resource type="Theme" id="Theme_0hpbb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2goil"]
+content_margin_left = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0, 0, 0, 0.282353)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="ItenPopup" type="Control"]
 layout_mode = 3
@@ -25,9 +43,11 @@ theme_override_styles/panel = ExtResource("2_e4b5l")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 3.05176e-05
+offset_bottom = 66.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 8
@@ -43,45 +63,53 @@ layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+theme = SubResource("Theme_xd22m")
+theme_override_constants/separation = 0
 
 [node name="DIVIDE" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 30)
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 
 [node name="Name" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
+text = " Nome: "
 
 [node name="Category" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
+text = " Categoria: "
 
 [node name="Difficulty" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
+text = " Dificuldade: "
 
 [node name="Popularity" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
+text = " Popularidade: "
+
+[node name="DIVIDE2" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(325, 350)
+custom_minimum_size = Vector2(300, 400)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme = SubResource("Theme_0hpbb")
 
 [node name="Description" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer"]
-clip_contents = true
+visible = false
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-size_flags_vertical = 1
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
-horizontal_alignment = 1
+theme_override_styles/normal = SubResource("StyleBoxFlat_2goil")
 autowrap_mode = 2

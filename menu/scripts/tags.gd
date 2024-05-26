@@ -1,4 +1,4 @@
-extends VBoxContainer
+extends  Control
 
 func _ready():
 	# Itera sobre os filhos diretos do nó pai (Node)

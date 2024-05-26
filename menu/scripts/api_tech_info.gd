@@ -22,6 +22,8 @@ func popup(data: Dictionary):
 	side_menu.get_node("MarginContainer/HBoxContainer/VBoxContainer/Difficulty").text = aux.get_slice(",", 1)
 	side_menu.get_node("MarginContainer/HBoxContainer/VBoxContainer/Popularity").text = aux.get_slice(",", 3)
 	side_menu.get_node("MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/Description").text = "\n" + descInfo[0]
+	
+	side_menu.get_node("MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/Description").show()
 
 func _on_python_button_down():
 	send_request("python")

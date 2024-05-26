@@ -208,12 +208,12 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_5ifts")
 
 [node name="Tags" type="VBoxContainer" parent="Main/VBoxContainer/Tab"]
 layout_mode = 2
-script = ExtResource("5_7cnyg")
 
 [node name="Panel" type="Panel" parent="Main/VBoxContainer/Tab/Tags"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 theme = SubResource("Theme_auol1")
+script = ExtResource("5_7cnyg")
 
 [node name="Category" type="HBoxContainer" parent="Main/VBoxContainer/Tab/Tags/Panel"]
 layout_mode = 2
