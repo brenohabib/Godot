@@ -138,7 +138,6 @@ func send_request(language: String):
 							 
 func _on_request_completed(_result, _response_code, _headers, body):
 	var data = JSON.parse_string(body.get_string_from_utf8())
-
 	if data == null:
 		$"../ErrorDivide/Erro".show()
 		$"../ErrorDivide/Erro/Timer".start()

@@ -99,6 +99,7 @@ func _on_search_button_pressed():
 
 func _on_request_completed(_result, response_code, _headers, body):
 	var data = JSON.parse_string(body.get_string_from_utf8())
+
 	if data == null:
 		show_error()
 	elif response_code == 500:
@@ -106,6 +107,7 @@ func _on_request_completed(_result, response_code, _headers, body):
 		
 	else:
 		print(data)
+	
 	cancel_request()
 	recommendations_received.emit(data)
 

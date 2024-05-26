@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://b28inqgtkbjsc"]
+[gd_scene load_steps=48 format=3 uid="uid://b28inqgtkbjsc"]
 
 [ext_resource type="StyleBox" uid="uid://bgvw6tockiqsx" path="res://menu/styles/menu/fundo_menu.tres" id="1_h41kc"]
 [ext_resource type="Script" path="res://menu/scripts/api_tech_info.gd" id="2_hf1ev"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://savvh4ey2xyb" path="res://menu/images/django-icon-1606x2048-lwmw1z73.png" id="5_g4ihx"]
 [ext_resource type="Script" path="res://menu/scripts/search.gd" id="5_oogx5"]
 [ext_resource type="StyleBox" uid="uid://c13kn42k4p0vs" path="res://menu/styles/tab/tab_style.tres" id="5_shc3o"]
+[ext_resource type="FontFile" uid="uid://d2b4qe7yo6ng6" path="res://menu/fonte/Roboto-Black.ttf" id="6_lqlkv"]
 [ext_resource type="Texture2D" uid="uid://vkra6a8npwhd" path="res://menu/images/programming-language-flask-icon-512x457-79fa8wsi.png" id="6_n4en0"]
 [ext_resource type="Texture2D" uid="uid://d30b60ui4v41j" path="res://menu/images/React-icon.svg.png" id="7_mn0rd"]
 [ext_resource type="StyleBox" uid="uid://b4lywckp3ni8i" path="res://menu/styles/tab/tag_button.tres" id="7_ufypq"]
@@ -116,7 +117,9 @@ Button/colors/font_focus_color = Color(0, 0, 0, 1)
 Button/colors/font_hover_color = Color(0, 0, 0, 1)
 Button/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/constants/icon_max_width = 50
 Button/font_sizes/font_size = 36
+Button/fonts/font = ExtResource("6_lqlkv")
 Button/styles/focus = SubResource("StyleBoxFlat_bibx4")
 Button/styles/hover = SubResource("StyleBoxFlat_ryong")
 Button/styles/normal = ExtResource("7_ufypq")
@@ -261,10 +264,11 @@ layout_mode = 2
 text = "Baixa"
 
 [node name="MarginContainer" type="MarginContainer" parent="Main/VBoxContainer/Tab/Tags/Dificulty"]
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 6
 
-[node name="Button" type="Button" parent="Main/VBoxContainer/Tab/Tags/Dificulty"]
+[node name="Button" type="Button" parent="Main/VBoxContainer/Tab/Tags/Dificulty/MarginContainer"]
 layout_mode = 2
 text = "Pesquisar"
 
@@ -293,6 +297,7 @@ layout_mode = 2
 text = "BASIC"
 icon = ExtResource("3_5p74s")
 alignment = 0
+text_overrun_behavior = 3
 icon_alignment = 2
 expand_icon = true
 
@@ -741,6 +746,7 @@ icon_alignment = 2
 expand_icon = true
 
 [node name="Recommend" type="HTTPRequest" parent="Main/VBoxContainer"]
+timeout = 1.0
 script = ExtResource("3_fpn1f")
 
 [node name="Tech_Info" type="HTTPRequest" parent="Main/VBoxContainer"]
@@ -749,11 +755,14 @@ script = ExtResource("2_hf1ev")
 
 [node name="Side" parent="." instance=ExtResource("31_kem2r")]
 layout_mode = 1
+anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = 358.0
 offset_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 2
 
 [connection signal="timeout" from="Main/VBoxContainer/ErrorDivide/Erro/Timer" to="Main/VBoxContainer/ErrorDivide/Erro" method="_on_timer_timeout"]
 [connection signal="toggled" from="Main/VBoxContainer/Tab/Tags/Category/ProgrammingLanguage" to="Main/VBoxContainer/Recommend" method="_on_programming_language_toggled"]
@@ -766,7 +775,7 @@ offset_bottom = 0.0
 [connection signal="toggled" from="Main/VBoxContainer/Tab/Tags/Dificulty/High" to="Main/VBoxContainer/Recommend" method="_on_dificulty_high_toggled"]
 [connection signal="toggled" from="Main/VBoxContainer/Tab/Tags/Dificulty/Medium" to="Main/VBoxContainer/Recommend" method="_on_dificulty_medium_toggled"]
 [connection signal="toggled" from="Main/VBoxContainer/Tab/Tags/Dificulty/Low" to="Main/VBoxContainer/Recommend" method="_on_dificulty_low_toggled"]
-[connection signal="pressed" from="Main/VBoxContainer/Tab/Tags/Dificulty/Button" to="Main/VBoxContainer/Recommend" method="_on_search_button_pressed"]
+[connection signal="pressed" from="Main/VBoxContainer/Tab/Tags/Dificulty/MarginContainer/Button" to="Main/VBoxContainer/Recommend" method="_on_search_button_pressed"]
 [connection signal="button_down" from="Main/VBoxContainer/Tab/Tags/Tech/Buttons/Angular" to="Main/VBoxContainer/Tech_Info" method="_on_angular_button_down"]
 [connection signal="button_down" from="Main/VBoxContainer/Tab/Tags/Tech/Buttons/Basic" to="Main/VBoxContainer/Tech_Info" method="_on_basic_button_down"]
 [connection signal="button_down" from="Main/VBoxContainer/Tab/Tags/Tech/Buttons/C" to="Main/VBoxContainer/Tech_Info" method="_on_c_button_down"]

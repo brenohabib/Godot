@@ -27,7 +27,7 @@ tech(qbasic, programming_language, low, low).
 tech(scratch, programming_language, medium, low).
 tech(typescript, programming_language, high, low).
 tech(unicon, programming_language, low, medium).
-tech(visual_basic, programming_language, medium, medium).
+tech(visualbasic, programming_language, medium, medium).
 tech(webgl, framework, medium, medium).
 tech(xojo, programming_language, low, medium).
 tech(yorick, programming_language, low, medium).
