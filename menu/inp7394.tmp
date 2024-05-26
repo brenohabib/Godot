@@ -260,14 +260,6 @@ text = "Média"
 layout_mode = 2
 text = "Baixa"
 
-[node name="MarginContainer" type="MarginContainer" parent="Main/VBoxContainer/Tab/Tags/Dificulty"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Button" type="Button" parent="Main/VBoxContainer/Tab/Tags/Dificulty"]
-layout_mode = 2
-text = "Pesquisar"
-
 [node name="Tech" type="ScrollContainer" parent="Main/VBoxContainer/Tab/Tags"]
 custom_minimum_size = Vector2(0, 430)
 layout_mode = 2
@@ -750,23 +742,12 @@ script = ExtResource("2_hf1ev")
 [node name="Side" parent="." instance=ExtResource("31_kem2r")]
 layout_mode = 1
 anchor_left = 1.0
-anchor_right = 1.0
+anchor_right = 1.455
 anchor_bottom = 1.0
-offset_right = 358.0
+offset_right = 0.184937
 offset_bottom = 0.0
 
 [connection signal="timeout" from="Main/VBoxContainer/ErrorDivide/Erro/Timer" to="Main/VBoxContainer/ErrorDivide/Erro" method="_on_timer_timeout"]
-[connection signal="toggled" from="Main/VBoxContainer/Tab/Tags/Category/ProgrammingLanguage" to="Main/VBoxContainer/Recommend" method="_on_programming_language_toggled"]
-[connection signal="toggled" from="Main/VBoxContainer/Tab/Tags/Category/Framework" to="Main/VBoxContainer/Recommend" method="_on_framework_toggled"]
-[connection signal="toggled" from="Main/VBoxContainer/Tab/Tags/Category/Frontend" to="Main/VBoxContainer/Recommend" method="_on_frontend_toggled"]
-[connection signal="toggled" from="Main/VBoxContainer/Tab/Tags/Category/Toolkit" to="Main/VBoxContainer/Recommend" method="_on_toolkit_toggled"]
-[connection signal="toggled" from="Main/VBoxContainer/Tab/Tags/Popularity/High" to="Main/VBoxContainer/Recommend" method="_on_popularity_high_toggled"]
-[connection signal="toggled" from="Main/VBoxContainer/Tab/Tags/Popularity/Medium" to="Main/VBoxContainer/Recommend" method="_on_popularity_medium_toggled"]
-[connection signal="toggled" from="Main/VBoxContainer/Tab/Tags/Popularity/Low" to="Main/VBoxContainer/Recommend" method="_on_popularity_low_toggled"]
-[connection signal="toggled" from="Main/VBoxContainer/Tab/Tags/Dificulty/High" to="Main/VBoxContainer/Recommend" method="_on_dificulty_high_toggled"]
-[connection signal="toggled" from="Main/VBoxContainer/Tab/Tags/Dificulty/Medium" to="Main/VBoxContainer/Recommend" method="_on_dificulty_medium_toggled"]
-[connection signal="toggled" from="Main/VBoxContainer/Tab/Tags/Dificulty/Low" to="Main/VBoxContainer/Recommend" method="_on_dificulty_low_toggled"]
-[connection signal="pressed" from="Main/VBoxContainer/Tab/Tags/Dificulty/Button" to="Main/VBoxContainer/Recommend" method="_on_search_button_pressed"]
 [connection signal="button_down" from="Main/VBoxContainer/Tab/Tags/Tech/Buttons/Angular" to="Main/VBoxContainer/Tech_Info" method="_on_angular_button_down"]
 [connection signal="button_down" from="Main/VBoxContainer/Tab/Tags/Tech/Buttons/Basic" to="Main/VBoxContainer/Tech_Info" method="_on_basic_button_down"]
 [connection signal="button_down" from="Main/VBoxContainer/Tab/Tags/Tech/Buttons/C" to="Main/VBoxContainer/Tech_Info" method="_on_c_button_down"]
