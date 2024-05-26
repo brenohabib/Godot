@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://b28inqgtkbjsc"]
+[gd_scene load_steps=51 format=3 uid="uid://b28inqgtkbjsc"]
 
 [ext_resource type="StyleBox" uid="uid://bgvw6tockiqsx" path="res://menu/styles/menu/fundo_menu.tres" id="1_h41kc"]
 [ext_resource type="Script" path="res://menu/scripts/api_tech_info.gd" id="2_hf1ev"]
@@ -16,6 +16,7 @@
 [ext_resource type="StyleBox" uid="uid://c13kn42k4p0vs" path="res://menu/styles/tab/tab_style.tres" id="5_shc3o"]
 [ext_resource type="FontFile" uid="uid://d2b4qe7yo6ng6" path="res://menu/fonte/Roboto-Black.ttf" id="6_lqlkv"]
 [ext_resource type="Texture2D" uid="uid://vkra6a8npwhd" path="res://menu/images/programming-language-flask-icon-512x457-79fa8wsi.png" id="6_n4en0"]
+[ext_resource type="FontFile" uid="uid://b0w4jb764x12l" path="res://menu/fonte/Roboto-Regular.ttf" id="6_rcbti"]
 [ext_resource type="Texture2D" uid="uid://d30b60ui4v41j" path="res://menu/images/React-icon.svg.png" id="7_mn0rd"]
 [ext_resource type="StyleBox" uid="uid://b4lywckp3ni8i" path="res://menu/styles/tab/tag_button.tres" id="7_ufypq"]
 [ext_resource type="Texture2D" uid="uid://bnppsxbwdd70d" path="res://menu/images/1200px-Go_Logo_Blue.svg.png" id="8_1kkju"]
@@ -90,6 +91,12 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 shadow_color = Color(1, 1, 1, 0.6)
 shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ifts"]
+draw_center = false
+
+[sub_resource type="Theme" id="Theme_auol1"]
+Label/fonts/font = ExtResource("6_rcbti")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bibx4"]
 content_margin_left = 4.0
@@ -197,78 +204,99 @@ theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_tbhbe")
 theme_override_styles/tab_unselected = ExtResource("5_shc3o")
 theme_override_styles/tab_disabled = SubResource("StyleBoxFlat_l6cjl")
 theme_override_styles/tab_focus = SubResource("StyleBoxFlat_eyivu")
+theme_override_styles/panel = SubResource("StyleBoxFlat_5ifts")
 
 [node name="Tags" type="VBoxContainer" parent="Main/VBoxContainer/Tab"]
 layout_mode = 2
 script = ExtResource("5_7cnyg")
 
-[node name="Category" type="HBoxContainer" parent="Main/VBoxContainer/Tab/Tags"]
+[node name="Panel" type="Panel" parent="Main/VBoxContainer/Tab/Tags"]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
+theme = SubResource("Theme_auol1")
 
-[node name="Text" type="Label" parent="Main/VBoxContainer/Tab/Tags/Category"]
+[node name="Category" type="HBoxContainer" parent="Main/VBoxContainer/Tab/Tags/Panel"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 5.0
+offset_bottom = -64.0
+
+[node name="Text" type="Label" parent="Main/VBoxContainer/Tab/Tags/Panel/Category"]
 layout_mode = 2
 text = "Categoria :"
 
-[node name="ProgrammingLanguage" type="CheckBox" parent="Main/VBoxContainer/Tab/Tags/Category"]
+[node name="ProgrammingLanguage" type="CheckBox" parent="Main/VBoxContainer/Tab/Tags/Panel/Category"]
 layout_mode = 2
 text = "Linguagem de Programação"
 
-[node name="Framework" type="CheckBox" parent="Main/VBoxContainer/Tab/Tags/Category"]
+[node name="Framework" type="CheckBox" parent="Main/VBoxContainer/Tab/Tags/Panel/Category"]
 layout_mode = 2
 text = "Framework"
 
-[node name="Frontend" type="CheckBox" parent="Main/VBoxContainer/Tab/Tags/Category"]
+[node name="Frontend" type="CheckBox" parent="Main/VBoxContainer/Tab/Tags/Panel/Category"]
 layout_mode = 2
 text = "Frontend"
 
-[node name="Toolkit" type="CheckBox" parent="Main/VBoxContainer/Tab/Tags/Category"]
+[node name="Toolkit" type="CheckBox" parent="Main/VBoxContainer/Tab/Tags/Panel/Category"]
 layout_mode = 2
 text = "Toolkit"
 
-[node name="Popularity" type="HBoxContainer" parent="Main/VBoxContainer/Tab/Tags"]
+[node name="Popularity" type="HBoxContainer" parent="Main/VBoxContainer/Tab/Tags/Panel"]
 layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 35.0
+offset_bottom = -34.0
 
-[node name="Text" type="Label" parent="Main/VBoxContainer/Tab/Tags/Popularity"]
+[node name="Text" type="Label" parent="Main/VBoxContainer/Tab/Tags/Panel/Popularity"]
 layout_mode = 2
 text = "Popularidade :"
 
-[node name="High" type="CheckBox" parent="Main/VBoxContainer/Tab/Tags/Popularity"]
+[node name="High" type="CheckBox" parent="Main/VBoxContainer/Tab/Tags/Panel/Popularity"]
 layout_mode = 2
 text = "Alta"
 
-[node name="Medium" type="CheckBox" parent="Main/VBoxContainer/Tab/Tags/Popularity"]
+[node name="Medium" type="CheckBox" parent="Main/VBoxContainer/Tab/Tags/Panel/Popularity"]
 layout_mode = 2
 text = "Média"
 
-[node name="Low" type="CheckBox" parent="Main/VBoxContainer/Tab/Tags/Popularity"]
+[node name="Low" type="CheckBox" parent="Main/VBoxContainer/Tab/Tags/Panel/Popularity"]
 layout_mode = 2
 text = "Baixa"
 
-[node name="Dificulty" type="HBoxContainer" parent="Main/VBoxContainer/Tab/Tags"]
+[node name="Dificulty" type="HBoxContainer" parent="Main/VBoxContainer/Tab/Tags/Panel"]
 layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.05
+offset_left = 10.0
+offset_top = 65.0
+offset_bottom = -9.00001
 
-[node name="Text" type="Label" parent="Main/VBoxContainer/Tab/Tags/Dificulty"]
+[node name="Text" type="Label" parent="Main/VBoxContainer/Tab/Tags/Panel/Dificulty"]
 layout_mode = 2
 text = "Dificuldade :"
 
-[node name="High" type="CheckBox" parent="Main/VBoxContainer/Tab/Tags/Dificulty"]
+[node name="High" type="CheckBox" parent="Main/VBoxContainer/Tab/Tags/Panel/Dificulty"]
 layout_mode = 2
 text = "Alta"
 
-[node name="Medium" type="CheckBox" parent="Main/VBoxContainer/Tab/Tags/Dificulty"]
+[node name="Medium" type="CheckBox" parent="Main/VBoxContainer/Tab/Tags/Panel/Dificulty"]
 layout_mode = 2
 text = "Média"
 
-[node name="Low" type="CheckBox" parent="Main/VBoxContainer/Tab/Tags/Dificulty"]
+[node name="Low" type="CheckBox" parent="Main/VBoxContainer/Tab/Tags/Panel/Dificulty"]
 layout_mode = 2
 text = "Baixa"
 
-[node name="MarginContainer" type="MarginContainer" parent="Main/VBoxContainer/Tab/Tags/Dificulty"]
+[node name="MarginContainer" type="MarginContainer" parent="Main/VBoxContainer/Tab/Tags/Panel/Dificulty"]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 
-[node name="Button" type="Button" parent="Main/VBoxContainer/Tab/Tags/Dificulty/MarginContainer"]
+[node name="Button" type="Button" parent="Main/VBoxContainer/Tab/Tags/Panel/Dificulty/MarginContainer"]
 layout_mode = 2
 text = "Pesquisar"
 
@@ -765,17 +793,17 @@ grow_horizontal = 0
 grow_vertical = 2
 
 [connection signal="timeout" from="Main/VBoxContainer/ErrorDivide/Erro/Timer" to="Main/VBoxContainer/ErrorDivide/Erro" method="_on_timer_timeout"]
-[connection signal="toggled" from="Main/VBoxContainer/Tab/Tags/Category/ProgrammingLanguage" to="Main/VBoxContainer/Recommend" method="_on_programming_language_toggled"]
-[connection signal="toggled" from="Main/VBoxContainer/Tab/Tags/Category/Framework" to="Main/VBoxContainer/Recommend" method="_on_framework_toggled"]
-[connection signal="toggled" from="Main/VBoxContainer/Tab/Tags/Category/Frontend" to="Main/VBoxContainer/Recommend" method="_on_frontend_toggled"]
-[connection signal="toggled" from="Main/VBoxContainer/Tab/Tags/Category/Toolkit" to="Main/VBoxContainer/Recommend" method="_on_toolkit_toggled"]
-[connection signal="toggled" from="Main/VBoxContainer/Tab/Tags/Popularity/High" to="Main/VBoxContainer/Recommend" method="_on_popularity_high_toggled"]
-[connection signal="toggled" from="Main/VBoxContainer/Tab/Tags/Popularity/Medium" to="Main/VBoxContainer/Recommend" method="_on_popularity_medium_toggled"]
-[connection signal="toggled" from="Main/VBoxContainer/Tab/Tags/Popularity/Low" to="Main/VBoxContainer/Recommend" method="_on_popularity_low_toggled"]
-[connection signal="toggled" from="Main/VBoxContainer/Tab/Tags/Dificulty/High" to="Main/VBoxContainer/Recommend" method="_on_dificulty_high_toggled"]
-[connection signal="toggled" from="Main/VBoxContainer/Tab/Tags/Dificulty/Medium" to="Main/VBoxContainer/Recommend" method="_on_dificulty_medium_toggled"]
-[connection signal="toggled" from="Main/VBoxContainer/Tab/Tags/Dificulty/Low" to="Main/VBoxContainer/Recommend" method="_on_dificulty_low_toggled"]
-[connection signal="pressed" from="Main/VBoxContainer/Tab/Tags/Dificulty/MarginContainer/Button" to="Main/VBoxContainer/Recommend" method="_on_search_button_pressed"]
+[connection signal="toggled" from="Main/VBoxContainer/Tab/Tags/Panel/Category/ProgrammingLanguage" to="Main/VBoxContainer/Recommend" method="_on_programming_language_toggled"]
+[connection signal="toggled" from="Main/VBoxContainer/Tab/Tags/Panel/Category/Framework" to="Main/VBoxContainer/Recommend" method="_on_framework_toggled"]
+[connection signal="toggled" from="Main/VBoxContainer/Tab/Tags/Panel/Category/Frontend" to="Main/VBoxContainer/Recommend" method="_on_frontend_toggled"]
+[connection signal="toggled" from="Main/VBoxContainer/Tab/Tags/Panel/Category/Toolkit" to="Main/VBoxContainer/Recommend" method="_on_toolkit_toggled"]
+[connection signal="toggled" from="Main/VBoxContainer/Tab/Tags/Panel/Popularity/High" to="Main/VBoxContainer/Recommend" method="_on_popularity_high_toggled"]
+[connection signal="toggled" from="Main/VBoxContainer/Tab/Tags/Panel/Popularity/Medium" to="Main/VBoxContainer/Recommend" method="_on_popularity_medium_toggled"]
+[connection signal="toggled" from="Main/VBoxContainer/Tab/Tags/Panel/Popularity/Low" to="Main/VBoxContainer/Recommend" method="_on_popularity_low_toggled"]
+[connection signal="toggled" from="Main/VBoxContainer/Tab/Tags/Panel/Dificulty/High" to="Main/VBoxContainer/Recommend" method="_on_dificulty_high_toggled"]
+[connection signal="toggled" from="Main/VBoxContainer/Tab/Tags/Panel/Dificulty/Medium" to="Main/VBoxContainer/Recommend" method="_on_dificulty_medium_toggled"]
+[connection signal="toggled" from="Main/VBoxContainer/Tab/Tags/Panel/Dificulty/Low" to="Main/VBoxContainer/Recommend" method="_on_dificulty_low_toggled"]
+[connection signal="pressed" from="Main/VBoxContainer/Tab/Tags/Panel/Dificulty/MarginContainer/Button" to="Main/VBoxContainer/Recommend" method="_on_search_button_pressed"]
 [connection signal="button_down" from="Main/VBoxContainer/Tab/Tags/Tech/Buttons/Angular" to="Main/VBoxContainer/Tech_Info" method="_on_angular_button_down"]
 [connection signal="button_down" from="Main/VBoxContainer/Tab/Tags/Tech/Buttons/Basic" to="Main/VBoxContainer/Tech_Info" method="_on_basic_button_down"]
 [connection signal="button_down" from="Main/VBoxContainer/Tab/Tags/Tech/Buttons/C" to="Main/VBoxContainer/Tech_Info" method="_on_c_button_down"]
