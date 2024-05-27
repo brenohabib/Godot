@@ -27,7 +27,7 @@ tech(qbasic, programming_language, baixa, baixa).
 tech(scratch, programming_language, media, baixa).
 tech(typescript, programming_language, alta, baixa).
 tech(unicon, programming_language, baixa, media).
-tech(visualbasic, programming_language, media, media).
+tech(visual_basic, programming_language, media, media).
 tech(webgl, framework, media, media).
 tech(xojo, programming_language, baixa, media).
 tech(yorick, programming_language, baixa, media).

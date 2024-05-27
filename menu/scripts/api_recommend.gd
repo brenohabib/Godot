@@ -8,8 +8,6 @@ var active_categories = []
 
 signal recommendations_received(data)
 
-
-
 func _on_programming_language_toggled(toggled_on):
 	if toggled_on:
 		active_categories.append("category=programming_language")
@@ -84,13 +82,11 @@ func _on_dificulty_low_toggled(toggled_on):
 
 func send_request():
 	cancel_request()
-
 	var url = RECOMMEND_URL + "?"
-
 	# Build the query string based on active categories
 	for category in active_categories:
 		url += category + "&"
-
+	
 	request(url)
 
 func _on_search_button_pressed():
@@ -98,14 +94,27 @@ func _on_search_button_pressed():
 
 func _on_request_completed(_result, response_code, _headers, body):
 	var data = JSON.parse_string(body.get_string_from_utf8())
-
+	var buttons = $"../Tab/Tags/Tech/Buttons"
 	if data == null:
 		show_error()
 	elif response_code == 500:
 		show_error()
-		
 	else:
-		print(data)
+		var recommendations = data["recommendations"]
+		for button in buttons.get_children():
+			if button is Button:  # Verificando se o filho é um botão
+				var button_text = button.text.to_lower()  # Convertendo o texto do botão para minúsculas para comparação
+
+				var found = false
+				for linguagem in recommendations:
+					if button_text == linguagem:
+						found = true
+						break  # Se encontramos a linguagem, não precisamos continuar verificando
+
+				if found:
+					button.show()
+				else:
+					button.hide()
 	
 	cancel_request()
 	recommendations_received.emit(data)
@@ -113,3 +122,4 @@ func _on_request_completed(_result, response_code, _headers, body):
 func show_error():
 	$"../ErrorDivide/Erro".show()
 	$"../ErrorDivide/Erro/Timer".start()
+

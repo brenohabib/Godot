@@ -1,7 +1,7 @@
 extends  Control
 
 func _ready():
-	# Itera sobre os filhos diretos do nó pai (Node)
+	# Itera sobre os filhos diretos do nó pai
 	for hbox in get_children():
 		if hbox is HBoxContainer:
 			# Itera sobre os filhos do HBoxContainer

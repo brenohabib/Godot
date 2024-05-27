@@ -489,7 +489,7 @@ alignment = 0
 icon_alignment = 2
 expand_icon = true
 
-[node name="Visual_Basic" type="Button" parent="Main/VBoxContainer/Tab/Tags/Tech/Buttons"]
+[node name="VisualBasic" type="Button" parent="Main/VBoxContainer/Tab/Tags/Tech/Buttons"]
 layout_mode = 2
 text = "Visual Basic"
 icon = ExtResource("24_iicuc")
@@ -826,7 +826,7 @@ grow_vertical = 2
 [connection signal="button_down" from="Main/VBoxContainer/Tab/Tags/Tech/Buttons/Scratch" to="Main/VBoxContainer/Tech_Info" method="_on_scratch_button_down"]
 [connection signal="button_down" from="Main/VBoxContainer/Tab/Tags/Tech/Buttons/TypeScript" to="Main/VBoxContainer/Tech_Info" method="_on_type_script_button_down"]
 [connection signal="button_down" from="Main/VBoxContainer/Tab/Tags/Tech/Buttons/Unicon" to="Main/VBoxContainer/Tech_Info" method="_on_unicon_button_down"]
-[connection signal="button_down" from="Main/VBoxContainer/Tab/Tags/Tech/Buttons/Visual_Basic" to="Main/VBoxContainer/Tech_Info" method="_on_visual_basic_button_down"]
+[connection signal="button_down" from="Main/VBoxContainer/Tab/Tags/Tech/Buttons/VisualBasic" to="Main/VBoxContainer/Tech_Info" method="_on_visual_basic_button_down"]
 [connection signal="button_down" from="Main/VBoxContainer/Tab/Tags/Tech/Buttons/WebGL" to="Main/VBoxContainer/Tech_Info" method="_on_web_gl_button_down"]
 [connection signal="button_down" from="Main/VBoxContainer/Tab/Tags/Tech/Buttons/Xojo" to="Main/VBoxContainer/Tech_Info" method="_on_xojo_button_down"]
 [connection signal="button_down" from="Main/VBoxContainer/Tab/Tags/Tech/Buttons/Yorick" to="Main/VBoxContainer/Tech_Info" method="_on_yorick_button_down"]
