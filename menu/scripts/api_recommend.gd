@@ -98,7 +98,9 @@ func _on_request_completed(_result, response_code, _headers, body):
 	if data == null:
 		show_error()
 	elif response_code == 500:
-		show_error()
+		for button in buttons.get_children():
+			if button is Button:
+				button.show()
 	else:
 		var recommendations = data["recommendations"]
 		for button in buttons.get_children():
