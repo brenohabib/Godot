@@ -6,8 +6,6 @@ const RECOMMEND_URL = "http://127.0.0.1:8080/recommend"
 @onready var side_menu = $"../../../Side"
 var active_categories = []
 
-signal recommendations_received(data)
-
 func _on_programming_language_toggled(toggled_on):
 	if toggled_on:
 		active_categories.append("category=programming_language")
@@ -119,7 +117,6 @@ func _on_request_completed(_result, response_code, _headers, body):
 					button.hide()
 	
 	cancel_request()
-	recommendations_received.emit(data)
 
 func show_error():
 	$"../ErrorDivide/Erro".show()

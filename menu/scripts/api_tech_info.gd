@@ -145,6 +145,8 @@ func _on_request_completed(_result, _response_code, _headers, body):
 		$"../ErrorDivide/Erro/Timer".start()
 
 	else:
+		var side_menu = $"../../../Side"
+		side_menu.show()
 		popup(data)
 	
 	http_request.cancel_request()
