@@ -143,20 +143,18 @@ grow_vertical = 2
 
 [node name="Main" type="Control" parent="."]
 layout_mode = 1
-anchor_right = 0.966
-anchor_bottom = 0.84
-offset_right = -0.0380249
-offset_bottom = -0.320007
+anchor_right = 1.0
+anchor_bottom = 1.003
+offset_bottom = -2.94403
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Fundo" type="PanelContainer" parent="Main"]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.035
-anchor_bottom = 1.191
-offset_right = 0.189941
-offset_bottom = 0.0959473
+anchor_right = 1.0
+anchor_bottom = 1.002
+offset_bottom = -0.294067
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("1_h41kc")
@@ -169,12 +167,11 @@ theme_override_styles/panel = ExtResource("2_rhej3")
 layout_mode = 2
 anchor_left = 0.012
 anchor_top = 0.029
-anchor_right = 1.027
-anchor_bottom = 1.191
-offset_left = -0.192
-offset_top = 0.223999
-offset_right = 0.317932
-offset_bottom = 0.0959473
+anchor_right = 1.0
+anchor_bottom = 1.005
+offset_left = -0.516
+offset_top = 0.237001
+offset_bottom = -0.234985
 
 [node name="ErrorDivide" type="MarginContainer" parent="Main/VBoxContainer"]
 custom_minimum_size = Vector2(0, 60)
