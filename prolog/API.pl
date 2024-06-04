@@ -34,7 +34,7 @@ tech(yorick, programming_language, baixa, media).
 tech(zig, programming_language, baixa, media).
 
 % Regras de recomendação
-recommend_tech(Name, Category, Popularity, Difficulty) :-
+recommend_tech(Category, Popularity, Difficulty, Name) :-
     (var(Category) ; tech(Name, Category, _, _)),
     (var(Popularity) ; tech(Name, _, Popularity, _)),
     (var(Difficulty) ; tech(Name, _, _, Difficulty)).
