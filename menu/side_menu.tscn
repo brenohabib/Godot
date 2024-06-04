@@ -125,10 +125,10 @@ custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -36.0
-offset_top = 22.0
-offset_right = -5.99997
-offset_bottom = 53.0
+offset_left = -37.0
+offset_top = 20.0
+offset_right = -6.99997
+offset_bottom = 51.0
 text = ">"
 
 [connection signal="pressed" from="Hide" to="." method="_on_hide_pressed"]
