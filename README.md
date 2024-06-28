@@ -19,9 +19,9 @@ We utilized SWI-Prolog to create a communication mechanism via API with the HTTP
 - Developing rules to recommend technologies and handle HTTP requests.
 - Implementing handlers for recommendation and technology information retrieval.
 
-## Godot
+### Godot
 In Godot, we created a scene using Control Node and various GUI elements like CheckBox, Button, and HTTP Request to interact with the Prolog API. Scripts in GDScript managed the communication between the interface and Prolog, including sending requests and displaying results.
 
-# Run
+## Run
 
 You need to install [SWI-Prolog](https://www.swi-prolog.org/Download.html). Open the CMD inside prolog folder and run "swipl API.pl", it'll run a local API. With that set up, just open the Tech Recommender.
