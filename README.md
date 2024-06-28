@@ -1,6 +1,3 @@
-# Technology Recommendation System Using Godot and Prolog
-
-## Introduction
 With the rapid emergence of numerous technologies, it becomes challenging to keep up with all advancements. To address this, we developed a technology recommendation system with a user-friendly interface that provides recommendations based on the user's knowledge level and interests, considering the popularity of each technology.
 
 ## Technologies Used
@@ -13,7 +10,7 @@ Godot is an open-source game engine used for developing 2D and 3D games. It is k
 ## Implementation
 We used Godot for the graphical interface and Prolog for the system's logic.
 
-###Prolog
+### Prolog
 We utilized SWI-Prolog to create a communication mechanism via API with the HTTP modules. Key Prolog components included:
 
 - Defining facts about technologies with properties such as Name, Category, Popularity, and Difficulty.
